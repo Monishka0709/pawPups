@@ -110,8 +110,57 @@ let p = fetch('data.json')
     `;
     document.querySelector('.trending-card-list').appendChild(card);
   });
+
+  let dogCard = document.createElement('div');
+  dogCard.classList.add('dog-card-item');
+  dogCard.classList.add('swiper-slide');
+  dogCard.innerHTML = `
+  <div class="trending-card-link">
+  <div class="trending-card-imagecont">
+  <img class="trending-card-image" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="dog">
+  </div>
+  <div class="trending-card-text">
+  <div class="trending-card-price"> &#8377 500</div>
+  <div class="trending-card-title">Dog</div>
+ 
+  <button class="trending-card-button" onclick="addToCart('Dog', 500)">ADD TO CART</button>
+</div>
+  `;
+  document.querySelector('.trending-card-list').appendChild(dogCard);
   
 })
+
+
+
+// let q = fetch('data.json')
+// .then(res => res.json())
+// .then(data => {
+//   data.forEach(element => {
+//     let card = document.createElement('div');
+//     let url = element.img1;
+//     let newPrice = element.new_price;
+//     let dispayPrice = newPrice!="" ? newPrice : element.old_price;
+//     let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
+//     card.classList.add('trending-card-item');
+//     card.classList.add('swiper-slide');
+//     card.id = element.id;
+  
+//     card.innerHTML = `
+//     <div class="trending-card-link" onclick="showOrder('${element.name}','${element.price}','${element.description}')">
+//     <div class="trending-card-imagecont">
+//     <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
+//     </div>
+//     <div class="trending-card-text">
+//     <div class="trending-card-price"> &#8377 ${dispayPrice}</div>
+//     <div class="trending-card-title">${element.name}</div>
+   
+//     <button class="trending-card-button" onclick="addToCart('${element.name}', ${dispayPrice})">ADD TO CART</button>
+//   </div>
+//     `;
+//     document.querySelector('.trending-card-list').appendChild(card);
+//   });
+  
+// })
 
 
 const displayCategory = () =>{
