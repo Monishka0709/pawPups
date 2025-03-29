@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./checkout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="header.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    
+    <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
+    <title>Ziggy</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="topbar-container">
+            <div class="topbar-left-container">
+                <div class="topbar-left">
+                    <div class="icon" style="width: 16px;"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="icon-text">Find a Store</div>
+                </div>
+                <div class="topbar-left">
+                    <div class="icon"><i class="fa-solid fa-truck"></i></div>
+                    <div class="icon-text">Order Tracking</div>
+                </div>
+
+            </div>
+            <div class="topbar-center-container">
+                <div class="topbar-center-discount">15% Off</div>
+                <div class="topbar-center-text">$50+ when you buy online & pick-up in store</div>
+            </div>
+
+            <div class="topbar-right-container">
+                <div class="topbar-right"><select class="right-text" id="currency">
+                        <option value="USD">USD</option>
+                        <option value="EURO">EURO</option>
+                        <option value="CNY">CNY</option>
+                    </select></div>
+                <div class="topbar-right"><select class="right-text" id="language">
+                        <option value="USD">English</option>
+                        <option value="EURO">German</option>
+                        <option value="CNY">Chinese</option>
+                    </select></div>
+
+            </div>
+
+        </div>
+
+        <nav id="checkout-nav">
+            
+            <div class="logo-container"><img src="./assets/logo.png" alt=""> </div>
+            <div class="header-menu" style="width: fit-content; border: none;">
+
+                <div class="header-menu-option active-menu-option" onclick="headerOptionClick(event)">
+                    <div class="menu-text">Home</div>
+                    <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+                </div>
+    
+                <div class="header-menu-option" onclick="headerOptionClick(event)">
+                    <div class="menu-text">Shop</div>
+                    <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+                </div>
+                <div class="header-menu-option" onclick="headerOptionClick(event)">
+                    <div class="menu-text">Pages</div>
+                    <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+                </div>
+                <div class="header-menu-option" onclick="headerOptionClick(event)">
+                    <div class="menu-text">Blog</div>
+                    <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+                </div>
+                <div class="header-menu-option" onclick="headerOptionClick(event)">
+                    <div class="menu-text">Contact Us</div>
+                    <div class="menu-icon"><i class="fa-solid fa-angle-down" style="color: whitesmoke;"></i></div>
+                </div>
+    
+            </div>
+            <div class="search-container"><input class="search" type="text" placeholder="Search Products...">
+                <div class="search-icon"><i class="fas fa-search"></i></div>
+            </div>
+            <div class="other-nav-items">
+                
+                <div class="dropdown">
+                    <button class="dropdown-toggle icon" data-bs-toggle="dropdown" aria-expanded="false" >
+                        <i class="fa-regular fa-user" style="color: #010409;"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="./login.html">Login</a></li>
+                      <li><a class="dropdown-item" href="#">Account</a></li>
+                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                  </div>
+                <button type="button " data-bs-toggle="offcanvas"
+                    style="background: none; border: none; outline: none; " data-bs-target="#offcanvasRight" class="cart-icon"
+                    aria-controls="offcanvasRight"><i class="fa-solid fa-cart-shopping" style="color: #010409;"></i></button>
+                
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel"
+                            style="color: #010409;margin-bottom:0 ; ">
+                            Your Cart</h5>
+                        <button type="button" class="btn-close text-reset closebtn" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body" id="cart">
+                        <a href="./checkout.html" id="checkout-btn"><button class="checkout-button"> <div>Checkout</div><div> <i class="fa-solid fa-angle-right"></i></div></button></a>
+                    </div>
+                </div>
+                
+            </div>
+        </nav>
+
+        
+    </header>
+    <div class="checkout-left-title">
+        <h3>Checkout</h3>
+    </div>
+    <section class="checkout-container">
+        <div class="checkout-left">
+            
+            <div class="checkout-left-content">
+                <div class="checkout-left-content-title">            
+                    <h4>Shipping Address</h4>
+                </div>
+                <div class="checkout-left-content-form">
+                    <form action="">
+                        <input type="text" placeholder="First Name">
+                        <input type="text" placeholder="Last Name">
+                        <input type="text" placeholder="Address">
+                        <input type="text" placeholder="City">
+                        <input type="text" placeholder="Zip Code">
+                        <input type="text" placeholder="Country">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="checkout-right">
+            <div class="checkout-right-title">
+                <h3>Order Summary</h3>
+            </div>
+            <div class="checkout-right-content">
+                
+                <div class="checkout-right-content-items">
+                    <div class="checkout-right-content-item">
+                        <div class="checkout-right-content-item-title">
+                            <h5>Product Name</h5>
+                        </div>
+                        <div class="checkout-right-content-item-price">
+                            <h5>Price</h5>
+                        </div>
+                    </div>
+                    <div class="checkout-right-content-item">
+                        <div class="checkout-right-content-item-title">
+                            <h5>Product Name</h5>
+                        </div>
+                        <div class="checkout-right-content-item-price">
+                            <h5>Price</h5>
+                        </div>
+                    </div>
+                    <div class="checkout-right-content-item">
+                        <div class="checkout-right-content-item-title"> 
+                            <h5>Product Name</h5>
+                        </div>
+                        <div class="checkout-right-content-item-price">
+                            <h5>Price</h5>    
+                        </div>
+                    </div>
+                </div>
+                <div class="checkout-right-content-total">
+                    <div class="checkout-right-content-total-title">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="checkout-right-content-total-price">    
+                        <h4>Price</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+</body>
+</html>

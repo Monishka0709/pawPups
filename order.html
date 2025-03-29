@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <div class="menu-container"><button onclick="openNav()"><i class="fa-solid fa-bars"></i></button></div>    
+            <div class="logo-container"><img src="./assets/logo.png" alt=""> </div>
+            <div class="search-container">
+                <input class="search" type="text" placeholder="Search Products...">
+                <button class="search-icon"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="other-nav-items">
+                
+                <div class="dropdown">
+                    <button class="dropdown-toggle nav-icon" data-bs-toggle="dropdown" aria-expanded="false" >
+                        <i class="fa-regular fa-user" ></i>
+                        <div>User</div>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="./login.html">Login</a></li>
+                      <li><a class="dropdown-item" href="./account.html">Account</a></li>
+                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                  </div>
+                <button type="button nav-icon" data-bs-toggle="offcanvas"
+                    style="background: none; border: none; outline: none; " data-bs-target="#offcanvasRight" class="cart-icon"
+                    aria-controls="offcanvasRight">
+                    <i class="fa-solid fa-cart-shopping" ></i>
+                    <div>Cart</div>
+                </button>
+                
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 id="offcanvasRightLabel"
+                            style="color: #010409;margin-bottom:0 ; ">
+                            Your Cart</h5>
+                        <button type="button" class="btn-close text-reset closebtn" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body" id="cart">
+                        <a href="./checkout.html" id="checkout-btn"><button class="checkout-button"> <div>Checkout</div><div> <i class="fa-solid fa-angle-right"></i></div></button></a>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </nav>
+        <div class="sscreen">
+        <div class=" search-container">
+            <input class="search" type="text" placeholder="Search Products...">
+            <button class="search-icon"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+        <div class="header-menu">
+
+            <div class="header-menu-option " onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                <div class="menu-text">Dogs</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+
+            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                <div class="menu-text">Cats</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+
+            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                <div class="menu-text">Services</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+
+            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                <div class="menu-text">Community</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+
+            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                <div class="menu-text">Content Hub</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+        </div>
+    </header>
+
+
+    <section style="width: 100%; padding: 1rem; background-color: blueviolet; display: flex;">
+        <div class="left-order-container" style="background-color: bisque; width: 40%;">
+            <div class="order-img-container">
+                <div class="primary-img-container"><img src="./assets/best-dogs.png" alt=""></div>
+                <div class="secondary-img-container" style="display: flex; flex-wrap: wrap;">
+                    <img src="./assets/featured1.png" alt="">
+                    <img src="./assets/featured1.png" alt="">
+                    <img src="./assets/featured1.png" alt="">
+                    <img src="./assets/featured1.png" alt="">
+                </div>
+            </div>
+            
+        </div>
+        <div class="right-order-container">
+            <div class="order-heading">Title</div>
+            <div class="order-rating">5star</div>
+            <div class="order-price"> MRP &#8377 199 <div class="actual-price">149</div></div>
+            <div class="tax">INCLUSIVE OF ALL TAXES</div>
+        </div>
+    </section>
+</body>
+</html>

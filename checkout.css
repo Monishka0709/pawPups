@@ -1,0 +1,21 @@
+.checkout-container{
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.checkout-left-title{
+    padding: 2rem;
+}
+
+.checkout-left{
+    display: flex;
+    gap: 2rem;
+}
+
+.checkout-left-content-form form{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-direction: column;
+}
