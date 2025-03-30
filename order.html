@@ -29,7 +29,7 @@
                 <div class="dropdown">
                     <button class="dropdown-toggle nav-icon" data-bs-toggle="dropdown" aria-expanded="false" >
                         <i class="fa-regular fa-user" ></i>
-                        <div>User</div>
+                        <div>Profile</div>
                     </button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="./login.html">Login</a></li>
@@ -37,10 +37,11 @@
                       <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
                   </div>
-                <button type="button nav-icon" data-bs-toggle="offcanvas"
-                    style="background: none; border: none; outline: none; " data-bs-target="#offcanvasRight" class="cart-icon"
+                <button type="button nav-icon" data-bs-toggle="offcanvas" id="cart-icon"
+                    style="background: none; border: none; outline: none; " data-bs-target="#offcanvasRight" class="cart-icon nav-icon"
                     aria-controls="offcanvasRight">
                     <i class="fa-solid fa-cart-shopping" ></i>
+                    <div id="cart-item-numbers"></div>
                     <div>Cart</div>
                 </button>
                 
@@ -95,6 +96,20 @@
                 <div class="menu-text">Content Hub</div>
                 <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
             </div>
+            <!--
+            <div class="header-menu-option" onclick="headerOptionClick(event)">
+                <div class="menu-text">Pages</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+            <div class="header-menu-option" onclick="headerOptionClick(event)">
+                <div class="menu-text">Blog</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+            <div class="header-menu-option" onclick="headerOptionClick(event)">
+                <div class="menu-text">Contact Us</div>
+                <div class="menu-icon"><i class="fa-solid fa-angle-down" style="color: whitesmoke;"></i></div>
+            </div> -->
+
         </div>
     </header>
 

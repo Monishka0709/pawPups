@@ -1,11 +1,13 @@
 /* @import url("https://use.typekit.net/fcz5wla.css"); */
 @import url("https://use.typekit.net/fcz5wla.css");
+@import url('./header.css');
+@import url('./hero.css');
 
 
 :root {
-  /* --blue: #001A8E; */
+  --blue: #001A8E;
   /* --blue: #0528C5; */
-  --blue:#87CEEB;
+  /* --blue:#87CEEB; */
   --cyan: #26C8FB;
   /* --yellow: #F9EE83; */
   /* --yellow: #F9F718; */

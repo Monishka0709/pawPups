@@ -1,6 +1,6 @@
 new Swiper('.trending-card-wrapper', {
   direction: 'horizontal',
-  loop: true,
+  
   spaceBetween: 20,
   pagination: {
     el: '.swiper-pagination',
