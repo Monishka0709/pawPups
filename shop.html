@@ -494,12 +494,19 @@ const hideCategory = () =>{
                     <h4>${element.name}</h4>
                     <p>${element.description}</p>
                     <p>&#9733;&#9733;&#9733;&#9733;&#9733; (214)</p>
-                    <p><b>&#8377;${displayPrice}</b></p>
+                    <p class="price-container"><b>&#8377;${element.old_price}</b></p>
                 </div>
                 <div class="product-btn-container">
                     <button onclick="addToCart('${element.name}', ${displayPrice})">Add to Cart</button>
                 </div>
     `;
+    let del = document.createElement('del');
+    del.innerHTML = `&#8377;${element.old_price}`
+    
+
+    // if(newPrice !=""){
+    //     document.querySelector('.price-container').appendChild(del);
+    // }
     document.querySelector('.products').appendChild(productCard);
   });
   
