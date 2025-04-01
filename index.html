@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
    
     <link rel="stylesheet" href="./order.css">
+    <link rel="stylesheet" href="./header.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -18,12 +20,12 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
     <title>PawPups</title>
-    <script src="main.js" defer></script>
+    <script src="./main.js" defer></script>
 </head>
 
 <body>
 
-    <header>
+    <header id="header">
         
         <nav>
             <div class="menu-container"><button onclick="openNav()"><i class="fa-solid fa-bars"></i></button></div>    
@@ -105,9 +107,9 @@
                 <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
             </div>
 
-            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+            <div class="header-menu-option" id="contact" onclick="document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });">
                 <div class="menu-text">Contact</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+
             </div>
 
         </div>
@@ -116,81 +118,71 @@
    
 
 
-    <section class="hero-container">
+    <section class="hero-container" id="hero">
 
-        <!-- <div class="carousel">
-            <div class="carousel_inner">
-               <div class="carousel_item carousel_item__active">
-                  <img src="./img/img1.jpg" alt="" class="carousel_img">
-                  <div class="carousel_caption">
-                    <h1 class="carousel_title">Change It As You See Fit</h1>
-                    <p class="carousel_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id cupiditate
-                       corporis laudantium quae velit quam.</p>
-                 </div>
-               </div>
-               <div class="carousel_item">
-                  <img src="./img/img2.jpg" alt="" class="carousel_img">
-                  <div class="carousel_caption">
-                    <h1 class="carousel_title">Change It As You See Fit</h1>
-                    <p class="carousel_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id cupiditate
-                       corporis laudantium quae velit quam.</p>
-                 </div>
-               </div>
-               <div class="carousel_item">
-                  <img src="./img/img3.jpg" alt="" class="carousel_img">
-                  <div class="carousel_caption">
-                    <h1 class="carousel_title">Change It As You See Fit</h1>
-                    <p class="carousel_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id cupiditate
-                       corporis laudantium quae velit quam.</p>
-                 </div>
-               </div>
-            </div>
-         </div> -->
+
+
 
         <div class="banner-container">
-            <img src="./assets/hero_banner2.png" alt="" data-orientation="landscape" data-legacy="true">
-        </div>
-
-        <div class="special-offer hidden hidden-down" style="color: #fd6b22;"><img src="./assets/sp-off-bg.png" alt="">
-            <div class="sp-text">SPECIAL OFFER</div>
-        </div>
-        <h1 class="hero-title hidden hidden-right">Little One Feed For Dwarf Hamsters</h1>
-        <div class="hero-subtitle hidden hidden-right">Special Deal on only <strong style="color: #fd6b22;">
-                SUNDAY</strong> every week!</div>
-
-        <a href="#" class="shop-link hidden hidden-up"
-            style="display: flex; align-items: center; justify-content: center;">
-            <div class="shop-now-container">
-                <div class="shop-now" style="display: flex; align-items: center; justify-content: center; color: whitesmoke;">Shop Now
-                </div>
-                <div class="arrow" id="arrow"><i class="fa-solid fa-angle-right"></i></div>
+                      <div class="special-offer hidden hidden-down" style="color: #fd6b22;">
+                <div class="sp-text">SPECIAL OFFER</div>
             </div>
-        </a>
+            <h1 class="hero-title hidden hidden-right">Love Them Like Family, Care For Them Like Pros</h1>
+            <div class="hero-subtitle hidden hidden-right">Special Deal on only <strong style="color: #ff09a4;">
+                    SUNDAY</strong> every week!</div>
+            <div class="hero-btn-container">
+            <a id="shop-link" href="./shop.html" target="_blank"  class="shop-link hidden hidden-up"
+                style="display: flex; align-items: center; justify-content: center;">
+                <div class="shop-now-container">
+                    <div class="shop-now" style="display: flex; align-items: center; justify-content: center; color: whitesmoke;">Shop Products
+                    </div>
+                    <div class="arrow" id="arrow"><i class="fa-solid fa-angle-right"></i></div>
+                </div>
+            </a>
+    
+            <a href="./book.html" target="_blank" id="book-link" class="shop-link book-link hidden hidden-up"
+                style="display: flex; align-items: center; justify-content: center;">
+                <div class="shop-now-container book-now-container">
+                    <div class="shop-now" style="display: flex; align-items: center; justify-content: center; color: whitesmoke;">Book Services
+                    </div>
+                    <div class="arrow" id="arrow"><i class="fa-solid fa-angle-right"></i></div>
+                </div>
+            </a>
+        </div>
+
+        
+    </div>
+    <div class="hero-img-container">
+        <img src="./img/hero-img.jpg" alt="" class="hero-img">
+
+    </div>
 
     </section>
 
 
-
+    
 
     <section class="featured-container hidden">
         <div class="featured-content">
-            <!-- <div class="featured-title">Featured in</div> -->
+            <div class="featured-title">What are you looking for</div>
             <div class="featured-cards-container" style="border: none;">
                 <div class="featured-card">
                     <img src="./assets/featured1.png" alt="">
-                    <div>Dogs</div>
+                    <div>Pet Food</div>
                 </div>
                 <div class="featured-card">
                     <img src="./assets/featured2.png" alt="">
-                    <div>Cats</div>
+                    <div>Grooming</div>
                 </div>
                 <div class="featured-card">
                     <img src="./assets/featured3.png" alt="">
-                    <div>Small Pets</div>
+                    <div>Community</div>
                 </div>
-                <div class="featured-card"><img src="./assets/featured4.png" alt=""></div>
-                <div class="featured-card"><img src="./assets/featured5.png" alt=""></div>
-                <div class="featured-card"><img src="./assets/featured6.png" alt=""></div>
+                <div class="featured-card">
+                    <img src="./assets/featured4.png" alt="">
+                    <div>Learning Hub</div>
+                </div>
+                
 
             </div>
 
@@ -370,62 +362,45 @@
 
 
 
-
-    <!-- <section class="shopby-pets">
-        <h2 class="shopby-pets-title">Shop by Pets</h1>
-            <div class="shop-category-container">
-                <div class="shop-category">
-                    <div class="text">Food</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Beds</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Pharmacy</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Bowls</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Furniture</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Treats</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Toys</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-                <div class="shop-category">
-                    <div class="text">Crates</div>
-                    <div class="angle-right-container"><i class="fa-solid fa-angle-right"></i></div>
-                </div>
-
-            </div>
-    </section> -->
-
-
-    <section class="app-link-container">
-        <img src="./img/img1.jpg" alt="">
-    </section>
-
-
     <section class="trending-container dog-container">
         <div class="trendingbar">
-            <div class="trending-title">Best For Dogs</div>
+            <div class="trending-title">Professional Pet Services</div>
         </div>
 
         <div class="trending-cards-container swiper">
             <div class="trending-card-wrapper">
-                <ul class="trending-card-list dog-card-list swiper-wrapper">
+                <div class="trending-card-list dog-card-list swiper-wrapper" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-evenly;">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./assets/featured1.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Pet Grooming</h5>
+                          <p class="card-text">Professional grooming services including bath, haircut, nail trimming and more.</p>
+                          <p class="trending-card-price">From &#8377 799</p>
+                          <a href="#" class="btn btn-primary book-btn">Book Now</a>
+                        </div>
+                      </div>
 
-                </ul>
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./assets/featured1.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Veterinary Consultation</h5>
+                          <p class="card-text">Online and in-home veterinary consultations by certified veterinaries.</p>
+                          <p class="trending-card-price">From &#8377 599</p>
+                          <a href="#" class="btn btn-primary book-btn">Book Now</a>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./assets/featured1.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Dog Training</h5>
+                          <p class="card-text">Personalized training sessions to help with behavior, commands, and socialization.</p>
+                          <p class="trending-card-price">From &#8377 699</p>
+                          <a href="#" class="btn btn-primary book-btn">Book Now</a>
+                        </div>
+                      </div>
+
+                    </div>
 
                 <div class="swiper-button-prev" style="color: #363434;"></div>
                 <div class="swiper-button-next"></div>
@@ -433,240 +408,226 @@
         </div>    
     </section>
 
-    <!-- <section class="best-dogs-container" style="margin-top: 10rem;"> -->
-
-        <!-- <div class="trendingbar">
-            <div class="best-dogs-title trending-title">Best Selling For Dog</div>
+    <section class="community-section">
+        <div class="community-heading">
+            <h1>Join Our Pet Community</h1>
+            <p>Connect with fellow pet parents, share experiences, get advice, and participate in discussions.</p>
         </div>
-
-        <div class="dogs-main-container">
-            <div class="dogs-img-container">
-                <img src="./assets/best-dogs.png" alt="">
-
-            </div>
-
-            <ul class=" trending-card-list dogs-product-container">
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-
-
-            </ul>
-
-
-        </div> -->
         
-        <!-- <div class="trendingbar"> -->
-            <!-- <div class="trending-title">Best For Dogs</div> -->
-            <!-- <div class="trending-link">
-                <div class="trending-list">
-                    <div class="trending-link-button active" onclick="trendingButtonClick(event)">All Items</div>
-                    <div class="trending-link-button" onclick="trendingButtonClick(event)">Sales</div>
-                    <div class="trending-link-button" onclick="trendingButtonClick(event)">Featured</div>
-                    <div class="trending-link-button" onclick="trendingButtonClick(event)">Best Seller</div>
+        <div class="community-container">
+            <div class="feed">
+                <div class="post">
+                    <h3>Recommendations for hypoallergenic dog food?</h3>
+                    <p>My 3-year-old Labrador has been showing signs of food allergies lately. Can anyone recommend good hypoallergenic dog food brands available in India?</p>
+                    <span class="tags">Diet | Allergies | Dogs</span>
+                    <div class="actions">
+                        <button class="like-btn">👍 <span>0</span></button>
+                        <button class="comment-btn">💬 <span>0</span> Comments</button>
+                        <a href="#">Read More</a>
+                    </div>
                 </div>
-            </div> -->
-        <!-- </div> -->
-
-        <!-- <div class="trending-card-container swiper">
-        <div class="trending-card-wrapper">
-            <ul class="trending-card-list swiper-wrapper">
-
-            </ul>
-
-            <div class="swiper-button-prev" style="color: #363434;"></div>
-            <div class="swiper-button-next"></div>
+                <div class="post">
+                    <h3>How to introduce a new cat to my existing one?</h3>
+                    <p>I'm planning to adopt another cat, but I'm concerned about how my 2-year-old cat will react. Any tips for a smooth introduction?</p>
+                    <span class="tags">Cats | Behavior | Multi-pet homes</span>
+                    <div class="actions">
+                        <button class="like-btn">👍 <span>0</span></button>
+                        <button class="comment-btn">💬 <span>0</span> Comments</button>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <aside class="sidebar">
+                <div class="community">
+                    <h3>Join Our Community</h3>
+                    <p>Connect with 10,000+ pet parents from across India.</p>
+                    <button>Sign Up Now</button>
+                    <p>Already a member? <a href="#">Log In</a></p>
+                </div>
+                <div class="topics">
+                    <h3>Popular Topics</h3>
+                    <ul>
+                        <li># Training Tips (348 posts)</li>
+                        <li># Nutrition & Diet (276 posts)</li>
+                        <li># Health Concerns (214 posts)</li>
+                        <li># Grooming (189 posts)</li>
+                        <li># Behavior Problems (167 posts)</li>
+                    </ul>
+                </div>
+                <div class="events">
+                    <h3>Upcoming Events</h3>
+                    <ul>
+                        <li><strong>Friday 4 April</strong><br>Pet Adoption Drive - Cubbon Park, Bangalore</li>
+                        <li><strong>Friday 11 April</strong><br>Dog Training Workshop - Virtual Event</li>
+                        <li><strong>Friday 18 April</strong><br>Pet Health Camp - DLF Mall, Gurgaon</li>
+                    </ul>
+                </div>
+            </aside>
         </div>
-    </div>
-    </section> -->
-
-
-
-
+          </section>
     
 
 
 
-    <!-- <section class=" best-dogs-container best-cats-container" style="margin-top: 10rem;">
+    <section class="trending-container dog-container">
         <div class="trendingbar">
-            <div class="best-dogs-title trending-title">Best Selling For Cat</div>
+            <div class="trending-title">Pet Care Education Hub</div>
         </div>
 
-        <div class="dogs-main-container">
-
-            <ul class="trending-card-list dogs-product-container">
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
+        <div class="trending-cards-container swiper">
+            <div class="trending-card-wrapper">
+                <div class="trending-card-list dog-card-list swiper-wrapper" style="display: flex; flex-wrap:wrap ; gap: 1rem; justify-content: space-evenly;">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./assets/featured1.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Essential Vaccinations for Your Dog in India</h5>
+                          <p class="card-text">Learn about the core vaccines your dog needs, when to get them, and why they're important for your pet's health.</p>
+                          <a href="#" class="btn btn-primary book-btn">Read More</a>
                         </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./assets/featured1.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Complete Guide to Cat Nutrition</h5>
+                          <p class="card-text">Everything you need to know about feeding your cat, from kitten to senior, including homemade vs commercial food options. </p>
+                          <a href="#" class="btn btn-primary book-btn">Read More</a>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="./assets/featured1.png" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Basic Obedience Training for Puppies</h5>
+                          <p class="card-text">A step-by-step guide to teaching obedience commands to your puppy, from basic commands to complex ones.</p>
+                          <a href="#" class="btn btn-primary book-btn">Read More</a>
+                        </div>
+                      </div>
+
+                      
 
                     </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
 
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-                <li class="trending-card-item">
-                    <div class="trending-card-link">
-                        <div class="trending-card-imagecont"><img class="trending-card-image"
-                                src="./assets/featured1.png" alt=""></div>
-                        <button class="trending-card-button" onclick="addToCart()">ADD TO CART</button>
-                        <div class="trending-card-text">
-                            <div class="trending-card-price">$12.99</div>
-                            <div class="trending-card-title">Puppy Treats</div>
-                        </div>
-
-                    </div>
-                </li>
-
-
-            </ul>
-            <div class="dogs-img-container">
-                <img src="./assets/best-cats.png" alt="">
-
+                <div class="swiper-button-prev" style="color: #363434;"></div>
+                <div class="swiper-button-next"></div>
             </div>
+        </div>    
+        <div style="display: flex; justify-content: center;">
+            <button class="articles-btn" >View All</button>
+          </div>
+    </section>
 
 
 
+    <div class="top-ref-container " onclick="document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });">
+    
+             <i class="fa-solid fa-angle-up"></i>
+
+    </div>
+   
+
+
+
+    <section class="social-media-container">
+        <div class="container">
+            <div class="instagram-section">
+                <h3>
+                    <img src="./assets/instagram-icon.png" alt="Instagram" class="social-media-icon"> Follow Us on Instagram
+                </h3>
+                <div class="image-grid">
+                    <img src="./assets/featured3.png" alt="Dog">
+                    <img src="pug.jpg" alt="Pug">
+                    <img src="hamster.jpg" alt="Hamster">
+                    <img src="corgi.jpg" alt="Corgi">
+                    <img src="cat.jpg" alt="Cat">
+                    <img src="dog2.jpg" alt="Dog">
+                </div>
+                <p><a href="https://www.instagram.com/pawsomeindia" target="_blank">@pawsomeindia</a></p>
+            </div>
+            <div class="whatsapp-section">
+                <h3>
+                    <img src="./assets/whatsapp.png" alt="WhatsApp" class="social-media-icon"> Connect on WhatsApp
+                </h3>
+                <div class="whatsapp-card">
+                    <p><strong>Quick Support via WhatsApp</strong><br>Get instant help, order updates, and advice</p>
+                    <ul>
+                        <li><strong>Product Inquiries:</strong> Ask about product details, availability, and usage</li>
+                        <li><strong>Order Status:</strong> Track your orders and get delivery updates</li>
+                        <li><strong>Appointment Reminders:</strong> Get reminders for your pet's services</li>
+                    </ul>
+                    <a href="https://wa.me/1234567890" class="whatsapp-button">Start Chat</a>
+                </div>
+            </div>
         </div>
-    </section> -->
 
+    </section>
 
+    <section class="newsletter-container">
 
-    <!-- <section class="app-link-container hidden">
-        <a href="#">
-            <img src="./assets/app_link.png" alt="">
-        </a>
-    </section> -->
+        <div class="overlay"></div>
+    <div class=" newsletter">
+        <h2 class="newsletter-title">Join Our Pack!</h2>
+        <p class="newsletter-description">Subscribe to our newsletter for exclusive deals, pet care tips, and community updates.</p>
+        <div class="input-box">
+            <input type="email" placeholder="Your email address" id="email">
+            <button onclick="subscribe()" class="subscribe-button">Subscribe Now</button>
+        </div>
+        <p class="privacy-text">We respect your privacy and will never share your information.</p>
+    </div>
 
+    </section>
 
-    <div class="whatsapp-container hidden">
-        <a href="https://api.whatsapp.com/send?phone=917026391913&text=Hi" target="_blank">
-            <img src="./assets/whatsapp.png" alt=""></a>
-
-    </div></a>
-
-    <!-- <footer class="app-link-container">
-        <img src="./assets/footer.png" alt="">
-    </footer> -->
+   
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>PawPups</h3>
+                <p>India's premier destination for pet products, services, community, and education.</p>
+                <div class="social-icons">
+                    <a href="#">🐦</a>
+                    <a href="#">📘</a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#">▶</a>
+                    <a href="#">💬</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#">Dog Products</a></li>
+                    <li><a href="#">Cat Products</a></li>
+                    <li><a href="#">Bird Products</a></li>
+                    <li><a href="#">Small Pets</a></li>
+                    <li><a href="#">Fish & Aquatics</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Grooming</a></li>
+                    <li><a href="#">Veterinary Care</a></li>
+                    <li><a href="#">Training</a></li>
+                    <li><a href="#">Pet Sitting</a></li>
+                    <li><a href="#">Dog Walking</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Help & Support</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 PawsomeIndia. All rights reserved. | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
+        </div>
+    </footer>
+    
 
 
 

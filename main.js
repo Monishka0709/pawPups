@@ -38,49 +38,49 @@ new Swiper('.trending-card-wrapper', {
 
 
 
-window.addEventListener("load", () => {
-  autoSlide();
-})
+// window.addEventListener("load", () => {
+//   autoSlide();
+// })
 
-function autoSlide() {
-  setInterval(() => {
-     slide(getItemActiveIndex() + 1);
-  }, 3000); 
-}
+// function autoSlide() {
+//   setInterval(() => {
+//      slide(getItemActiveIndex() + 1);
+//   }, 3000); 
+// }
 
-function slide(toIndex) {
-  const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
-  const itemActive = document.querySelector(".carousel_item__active");
+// function slide(toIndex) {
+//   const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
+//   const itemActive = document.querySelector(".carousel_item__active");
 
-  // check if toIndex exceeds the number of carousel items
-  if (toIndex >= itemsArray.length) {
-     toIndex = 0;
-  }
+//   // check if toIndex exceeds the number of carousel items
+//   if (toIndex >= itemsArray.length) {
+//      toIndex = 0;
+//   }
 
-  const newItemActive = itemsArray[toIndex];
+//   const newItemActive = itemsArray[toIndex];
 
-  // start transition
-  newItemActive.classList.add("carousel_item__pos_next");
-  setTimeout(() => {
-     newItemActive.classList.add("carousel_item__next");
-     itemActive.classList.add("carousel_item__next");
-  }, 20);
+//   // start transition
+//   newItemActive.classList.add("carousel_item__pos_next");
+//   setTimeout(() => {
+//      newItemActive.classList.add("carousel_item__next");
+//      itemActive.classList.add("carousel_item__next");
+//   }, 20);
 
-  // remove all transition class and switch active class
-  newItemActive.addEventListener("transitionend", () => {
-     itemActive.className = "carousel_item";
-     newItemActive.className = "carousel_item carousel_item__active";
-  }, {
-     once: true
-  });
-}
+//   // remove all transition class and switch active class
+//   newItemActive.addEventListener("transitionend", () => {
+//      itemActive.className = "carousel_item";
+//      newItemActive.className = "carousel_item carousel_item__active";
+//   }, {
+//      once: true
+//   });
+// }
 
-function getItemActiveIndex() {
-  const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
-  const itemActive = document.querySelector(".carousel_item__active");
-  const itemActiveIndex = itemsArray.indexOf(itemActive);
-  return itemActiveIndex;
-}
+// function getItemActiveIndex() {
+//   const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
+//   const itemActive = document.querySelector(".carousel_item__active");
+//   const itemActiveIndex = itemsArray.indexOf(itemActive);
+//   return itemActiveIndex;
+// }
 
 
 let p = fetch('data.json')
@@ -111,24 +111,56 @@ let p = fetch('data.json')
     document.querySelector('.trending-card-list').appendChild(card);
   });
 
-  let dogCard = document.createElement('div');
-  dogCard.classList.add('dog-card-item');
-  dogCard.classList.add('swiper-slide');
-  dogCard.innerHTML = `
-  <div class="trending-card-link">
-  <div class="trending-card-imagecont">
-  <img class="trending-card-image" src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="dog">
-  </div>
-  <div class="trending-card-text">
-  <div class="trending-card-price"> &#8377 500</div>
-  <div class="trending-card-title">Dog</div>
- 
-  <button class="trending-card-button" onclick="addToCart('Dog', 500)">ADD TO CART</button>
-</div>
-  `;
-  document.querySelector('.trending-card-list').appendChild(dogCard);
   
 })
+.then(data => {
+  data.forEach(element => {
+    let productCard = document.createElement('div');
+    let url = element.img1;
+    let newPrice = element.new_price;
+    let displayPrice = newPrice!="" ? newPrice : element.old_price;
+    let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
+    productCard.classList.add('product');
+    productCard.id = element.id;
+  
+    productCard.innerHTML = `
+                    <div> 
+                    <img src="${imgsrc}" alt="Cat and Dog">
+                    <h4>${element.name}</h4>
+                    <p>${element.description}</p>
+                    <p>&#9733;&#9733;&#9733;&#9733;&#9733; (214)</p>
+                    <p><b>&#8377;${displayPrice}</b></p>
+                </div>
+                <div class="product-btn-container">
+                    <button onclick="addToCart('${element.name}', ${displayPrice})">Add to Cart</button>
+                </div>
+    `;
+    document.querySelector('.products').appendChild(productCard);
+  });
+  
+})
+
+
+
+function subscribe() {
+  let email = document.getElementById('email').value;
+  if(email) {
+      alert('Thank you for subscribing!');
+      document.getElementById('email').value = '';
+  } else {
+      alert('Please enter a valid email address.');
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".like-btn").forEach(button => {
+      button.addEventListener("click", function() {
+          let count = this.querySelector("span");
+          count.textContent = parseInt(count.textContent) + 1;
+      });
+  });
+});
+
 
 
 
@@ -136,28 +168,27 @@ let p = fetch('data.json')
 // .then(res => res.json())
 // .then(data => {
 //   data.forEach(element => {
-//     let card = document.createElement('div');
+//     let productCard = document.createElement('div');
 //     let url = element.img1;
 //     let newPrice = element.new_price;
-//     let dispayPrice = newPrice!="" ? newPrice : element.old_price;
+//     let displayPrice = newPrice!="" ? newPrice : element.old_price;
 //     let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
-//     card.classList.add('trending-card-item');
-//     card.classList.add('swiper-slide');
-//     card.id = element.id;
+//     productCard.classList.add('product');
+//     productCard.id = element.id;
   
-//     card.innerHTML = `
-//     <div class="trending-card-link" onclick="showOrder('${element.name}','${element.price}','${element.description}')">
-//     <div class="trending-card-imagecont">
-//     <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
-//     </div>
-//     <div class="trending-card-text">
-//     <div class="trending-card-price"> &#8377 ${dispayPrice}</div>
-//     <div class="trending-card-title">${element.name}</div>
-   
-//     <button class="trending-card-button" onclick="addToCart('${element.name}', ${dispayPrice})">ADD TO CART</button>
-//   </div>
+//     productCard.innerHTML = `
+//                     <div> 
+//                     <img src="${imgsrc}" alt="Cat and Dog">
+//                     <h4>${element.name}</h4>
+//                     <p>${element.description}</p>
+//                     <p>&#9733;&#9733;&#9733;&#9733;&#9733; (214)</p>
+//                     <p><b>&#8377;${displayPrice}</b></p>
+//                 </div>
+//                 <div class="product-btn-container">
+//                     <button onclick="addToCart('${element.name}', ${displayPrice})">Add to Cart</button>
+//                 </div>
 //     `;
-//     document.querySelector('.trending-card-list').appendChild(card);
+//     document.querySelector('.products').appendChild(productCard);
 //   });
   
 // })
@@ -181,6 +212,8 @@ const hideCategory = () =>{
 
 
 
+
+
 const showOrder = (name, price, desc) =>{
   console.log(name);
   console.log(price);
@@ -189,6 +222,7 @@ const showOrder = (name, price, desc) =>{
 }
 
 
+// document.getElementById('shop-link').addEventListener('click', window.open('./shop.html', '_blank'));
 
 
 
@@ -199,7 +233,7 @@ const map = new Map();
 let total = 0;
 
 const addToCart = (name, price) => {
-  
+  console.log(name);
   const checkoutbtn = document.getElementById('checkout-btn');
   if (checkoutbtn) {
     checkoutbtn.style.display = 'block';

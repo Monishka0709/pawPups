@@ -129,7 +129,7 @@ nav{
     justify-content: flex-start;
 
     gap: 1.5rem;
-    padding: 0.3rem 0 0.3rem 1rem;
+    padding: 0.3rem 0 0.3rem 2rem;
     background-color: var(--beige);
     /* border: 1px solid #f0f0f0; */
 }
