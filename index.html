@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-   
     <link rel="stylesheet" href="./order.css">
-    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./hero.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,6 +21,7 @@
     <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
     <title>PawPups</title>
     <script src="./main.js" defer></script>
+    
 </head>
 
 <body>
@@ -28,10 +29,20 @@
     <header id="header">
         
         <nav>
-            <div class="menu-container"><button onclick="openNav()"><i class="fa-solid fa-bars"></i></button></div>    
+            <div class="dropdown menu-container">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="./shop.html">Products</a></li>
+                  <li><a class="dropdown-item" href="./services.html">Services</a></li>
+                  <li><a class="dropdown-item" href="./community.html">Community</a></li>
+                  <li><a class="dropdown-item" href="./community.html">Content Hub</a></li>
+                </ul>
+            </div> 
             <div class="logo-container"><img src="./assets/logo.png" alt=""> </div>
             <div class="search-container">
-                <input class="search" type="text" placeholder="Search Products...">
+                <input class="search" id="search" type="text" placeholder="Search Products...">
                 <button class="search-icon"><i class="fas fa-search"></i></button>
             </div>
             <div class="other-nav-items">
@@ -65,8 +76,10 @@
                         <button type="button" class="btn-close text-reset closebtn" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body" id="cart">
-                        <a href="./checkout.html" id="checkout-btn"><button class="checkout-button"> <div>Checkout</div><div> <i class="fa-solid fa-angle-right"></i></div></button></a>
+                    
+                    <div class="offcanvas-body">
+                        <div id="cart"></div>
+                        <div id="checkout-container"><a href="./checkout.html" id="checkout-btn"><button class="checkout-button"> Checkout <i class="fa-solid fa-angle-right"></i> </button></a></div>
                     </div>
                 </div>
                 
@@ -92,7 +105,7 @@
                 <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
             </div>
 
-            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+            <div class="header-menu-option" onclick="headerOptionClick(event)"  onmouseover="displayCategory()" onmouseout="hideCategory()">
                 <div class="menu-text">Community</div>
                 <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
             </div>
@@ -166,70 +179,27 @@
         <div class="featured-content">
             <div class="featured-title">What are you looking for</div>
             <div class="featured-cards-container" style="border: none;">
-                <div class="featured-card">
+                <a href="./shop.html" class="featured-card">
                     <img src="./assets/featured1.png" alt="">
                     <div>Pet Food</div>
-                </div>
-                <div class="featured-card">
+                </a>
+                <a href="./shop.html" class="featured-card">
                     <img src="./assets/featured2.png" alt="">
                     <div>Grooming</div>
-                </div>
-                <div class="featured-card">
+                </a>
+                <a href="./shop.html" class="featured-card">
                     <img src="./assets/featured3.png" alt="">
                     <div>Community</div>
-                </div>
-                <div class="featured-card">
+                </a>
+                <a href="./shop.html" class="featured-card">
                     <img src="./assets/featured4.png" alt="">
                     <div>Learning Hub</div>
-                </div>
+                </a>
                 
 
             </div>
 
         </div>
-
-        <!-- <div class='featured-ad-container'>
-            <div class='featured-ad'
-                style="background-color: #0a3b58; background-image: url(./assets/featured1bg.png); background-size:cover; background-repeat: no-repeat;">
-                <div style="display:flex; gap:1rem; flex-direction:column;  ">
-                    <h4 style="font-size:1rem; font-weight:600">DISCOUNT</h4>
-                    <p style="color: #fd6b22; font-size: 180%; font-weight: 700; letter-spacing: 1px;">25% Off</p>
-                    <div style="font-weight: 600; font-size: 1.1rem;">Foods they love</div>
-                    <button class=""
-                        style="background:#6633cc;display: flex; gap:0.5rem; padding: 0.7rem; width: 150.2px; align-items: center; justify-content: center; border-radius: 2rem; border:none; cursor: pointer;">
-                        <div>SHOP NOW</div>
-                        <div class="angle-right-container">
-                            <i class="fa-solid fa-angle-right" style="color: #6633cc;"></i>
-                        </div>
-                    </button>
-                </div>
-
-
-
-            </div>
-            <div class='featured-ad'
-                style="background-color: #fd8d4e; background-image: url(./assets/featured2bg.png); background-size:cover; background-repeat: no-repeat;">
-                <div style="display:flex; gap:1rem; flex-direction:column;  ">
-
-                    <p
-                        style="color: whitesmoke; font-size: 180%; font-weight: 700; letter-spacing: 1px; text-align: left;">
-                        Keep Your<br /> Paw Off</p>
-                    <div style="font-weight: 600; font-size: 1.1rem;">Use Code: SALE2025</div>
-                    <button
-                        style="background:#6633cc; cursor: pointer;display: flex; gap:0.5rem; padding: 0.7rem; width: 150.2px; align-items: center; justify-content: center; border-radius: 2rem; border:none;">
-                        <div>SHOP NOW</div>
-                        <div class="angle-right-container">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </div>
-                    </button>
-                </div>
-
-
-
-            </div>
-
-        </div> -->
-
     </section>
 
 
@@ -239,14 +209,6 @@
     <section class="trending-container">
         <div class="trendingbar">
             <div class="trending-title">Our BestSellers</div>
-            <!-- <div class="trending-link">
-                <div class="trending-list">
-                    <div class="trending-link-button active" onclick="trendingButtonClick(event)">All Items</div>
-                    <div class="trending-link-button" onclick="trendingButtonClick(event)">Sales</div>
-                    <div class="trending-link-button" onclick="trendingButtonClick(event)">Featured</div>
-                    <div class="trending-link-button" onclick="trendingButtonClick(event)">Best Seller</div>
-                </div>
-            </div> -->
         </div>
 
         <div class="trending-cards-container swiper">
@@ -265,7 +227,6 @@
 
 
     <div class="category-menu" id="category-menu" onmouseover="displayCategory()" onmouseout="hideCategory()">
-        <div class="category-menu-left">
             <div class="category-menu-item">
                 <div class="category">FOOD</div>
                 <div class="subcategory">Dry Food</div>
@@ -273,45 +234,8 @@
                 <div class="subcategory">Puppy Food </div>
                 <div class="subcategory">Fresh Food</div>
                 <div class="subcategory">Prescription Food</div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
             </div>
             
-        </div>
-        <div class="category-menu-right">
             <div class="category-menu-item">
                 <div class="category">FOOD</div>
                 <div class="subcategory">Dry Food</div>
@@ -320,41 +244,7 @@
                 <div class="subcategory">Fresh Food</div>
                 <div class="subcategory">Prescription Food</div>
             </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
-            <div class="category-menu-item">
-                <div class="category"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-                <div class="subcategory"></div>
-            </div>
+            
 
         </div>
 
@@ -519,12 +409,19 @@
     </section>
 
 
+    <div class="whatsapp-container " onclick="document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });">
+    <a href="https://api.whatsapp.com"> <img src="./assets/whatsapp.png" alt=""></a>
+       
+
+</div>
 
     <div class="top-ref-container " onclick="document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });">
     
              <i class="fa-solid fa-angle-up"></i>
 
     </div>
+
+
    
 
 
@@ -631,7 +528,7 @@
 
 
 
-
+    <script src="./cart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,34 +10,25 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
-    
+    <script src="./main.js" defer></script>
     <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./order.css">
+
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Order</title>
+    
 </head>
+
 <body>
     <header>
-        
+
+
         <nav>
-            <div class="menu-container"><button onclick="openNav()"><i class="fa-solid fa-bars"></i></button></div>    
+            <button class="backbutton" style="margin-left: 1rem;">
+                <a href="./shop.html"> <i class="fa-solid fa-arrow-left"></i></a>
+            </button>
             <div class="logo-container"><img src="./assets/logo.png" alt=""> </div>
-            <div class="search-container">
-                <input class="search" type="text" placeholder="Search Products...">
-                <button class="search-icon"><i class="fas fa-search"></i></button>
-            </div>
             <div class="other-nav-items">
-                
-                <div class="dropdown">
-                    <button class="dropdown-toggle nav-icon" data-bs-toggle="dropdown" aria-expanded="false" >
-                        <i class="fa-regular fa-user" ></i>
-                        <div>Profile</div>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="./login.html">Login</a></li>
-                      <li><a class="dropdown-item" href="./account.html">Account</a></li>
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                  </div>
                 <button type="button nav-icon" data-bs-toggle="offcanvas" id="cart-icon"
                     style="background: none; border: none; outline: none; " data-bs-target="#offcanvasRight" class="cart-icon nav-icon"
                     aria-controls="offcanvasRight">
@@ -50,89 +42,71 @@
                     aria-labelledby="offcanvasRightLabel">
                     <div class="offcanvas-header">
                         <h5 id="offcanvasRightLabel"
-                            style="color: #010409;margin-bottom:0 ; ">
+                            style="color: #010409;margin-bottom:0 ; font-weight: 800; ">
                             Your Cart</h5>
                         <button type="button" class="btn-close text-reset closebtn" data-bs-dismiss="offcanvas"
                             aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body" id="cart">
-                        <a href="./checkout.html" id="checkout-btn"><button class="checkout-button"> <div>Checkout</div><div> <i class="fa-solid fa-angle-right"></i></div></button></a>
+                    <div class="offcanvas-body">
+                        <div id="cart"></div>
+                        <div id="checkout-container"><a href="./checkout.html" id="checkout-btn"><button class="checkout-button"> Checkout<i class="fa-solid fa-angle-right"></i></button></a></div>
                     </div>
                 </div>
                 
             </div>
             
+
+
+            
         </nav>
-        <div class="sscreen">
-        <div class=" search-container">
-            <input class="search" type="text" placeholder="Search Products...">
-            <button class="search-icon"><i class="fas fa-search"></i></button>
-        </div>
-    </div>
+        
 
-        <div class="header-menu">
-
-            <div class="header-menu-option " onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
-                <div class="menu-text">Dogs</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-
-            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
-                <div class="menu-text">Cats</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-
-            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
-                <div class="menu-text">Services</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-
-            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
-                <div class="menu-text">Community</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-
-            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
-                <div class="menu-text">Content Hub</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-            <!--
-            <div class="header-menu-option" onclick="headerOptionClick(event)">
-                <div class="menu-text">Pages</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-            <div class="header-menu-option" onclick="headerOptionClick(event)">
-                <div class="menu-text">Blog</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
-            </div>
-            <div class="header-menu-option" onclick="headerOptionClick(event)">
-                <div class="menu-text">Contact Us</div>
-                <div class="menu-icon"><i class="fa-solid fa-angle-down" style="color: whitesmoke;"></i></div>
-            </div> -->
-
-        </div>
     </header>
-
-
-    <section style="width: 100%; padding: 1rem; background-color: blueviolet; display: flex;">
-        <div class="left-order-container" style="background-color: bisque; width: 40%;">
-            <div class="order-img-container">
-                <div class="primary-img-container"><img src="./assets/best-dogs.png" alt=""></div>
-                <div class="secondary-img-container" style="display: flex; flex-wrap: wrap;">
-                    <img src="./assets/featured1.png" alt="">
-                    <img src="./assets/featured1.png" alt="">
-                    <img src="./assets/featured1.png" alt="">
-                    <img src="./assets/featured1.png" alt="">
+    <section>
+        <div id="product-details" style="display: flex;"></div>
+    </section>
+    <!-- <section>
+        <div class="review-section">
+            <div class="rating-summary">
+                <div class="rating">5.0</div>
+                <div class="stars">
+                    <div class="star-bar">
+                        <span>5</span>
+                        <div class="bar"><div class="filled" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="star-bar">
+                        <span>4</span>
+                        <div class="bar"><div class="filled" style="width: 20%;"></div></div>
+                    </div>
+                    <div class="star-bar">
+                        <span>3</span>
+                        <div class="bar"><div class="filled" style="width: 10%;"></div></div>
+                    </div>
+                    <div class="star-bar">
+                        <span>2</span>
+                        <div class="bar"><div class="filled" style="width: 5%;"></div></div>
+                    </div>
+                    <div class="star-bar">
+                        <span>1</span>
+                        <div class="bar"><div class="filled" style="width: 2%;"></div></div>
+                    </div>
                 </div>
             </div>
-            
+            <div class="review">
+                <div class="review-header">
+                    <div class="stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                    </div>
+                    <div class="reviewer">Samra - 2 years ago</div>
+                </div>
+                <div class="review-body">
+                    <p>"Please bring some more brand & product."</p>
+                </div>
+            </div>
         </div>
-        <div class="right-order-container">
-            <div class="order-heading">Title</div>
-            <div class="order-rating">5star</div>
-            <div class="order-price"> MRP &#8377 199 <div class="actual-price">149</div></div>
-            <div class="tax">INCLUSIVE OF ALL TAXES</div>
-        </div>
-    </section>
+    
+    </section> -->
+    <script src="./cart.js"></script>
 </body>
+
 </html>

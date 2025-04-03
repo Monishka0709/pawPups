@@ -36,7 +36,17 @@ new Swiper('.trending-card-wrapper', {
 
 })
 
-
+const mainSearch = document.getElementById('search')
+const trendingProducts = document.querySelectorAll(".product");
+mainSearch.addEventListener("input", () => {
+  // const searchTerm = search.value.toLowerCase();
+  // trendingProducts.forEach(product => {
+  //     const title = product.querySelector("h4").innerText.toLowerCase();
+  //     const desc = product.querySelector("p").innerText.toLowerCase();
+  //     product.style.display = title.includes(searchTerm) || desc.includes(searchTerm) ? "block" : "none";
+  // });
+  console.log("clicked");
+});
 
 // window.addEventListener("load", () => {
 //   autoSlide();
@@ -82,65 +92,82 @@ new Swiper('.trending-card-wrapper', {
 //   return itemActiveIndex;
 // }
 
-
 let p = fetch('data.json')
-.then(res => res.json())
-.then(data => {
-  data.forEach(element => {
-    let card = document.createElement('div');
-    let url = element.img1;
-    let newPrice = element.new_price;
-    let dispayPrice = newPrice!="" ? newPrice : element.old_price;
-    let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
-    card.classList.add('trending-card-item');
-    card.classList.add('swiper-slide');
-    card.id = element.id;
+    .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+        return res.json();
+    })
+    .then(data => {
+        if (!data || data.length === 0) {
+            console.error("Error: No data found in 'data.json'");
+            return;
+        }
+
+        let container = document.querySelector('.trending-card-list');
+        if (!container) {
+            console.error("Error: '.trending-card-list' container not found!");
+            return;
+        }
+
+        data.forEach(element => {
+            let card = document.createElement('div');
+            let url = element.img1;
+            let newPrice = element.new_price;
+            let displayPrice = newPrice && newPrice !== "" ? newPrice : element.old_price;
+            let imgsrc = "https://lh3.googleusercontent.com/d/" + url;
+
+            card.classList.add('trending-card-item', 'swiper-slide');
+            card.id = element.id;
+
+            card.innerHTML = `
+                <div class="trending-card-link" onclick="showOrder('${element.name}', '${displayPrice}', '${element.description}')">
+                    <div class="trending-card-imagecont">
+                        <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
+                    </div>
+                    <div class="trending-card-text">
+                        <div class="trending-card-price">&#8377; ${displayPrice}</div>
+                        <div class="trending-card-title">${element.name}</div>
+                        <button class="trending-card-button" onclick="addToCart('${imgsrc}', '${element.name}', ${displayPrice})">ADD TO CART</button>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+    })
+    .catch(error => console.error(`Fetch error: ${error.message}`));
+
+
+// let p = fetch('data.json')
+// .then(res => res.json())
+// .then(data => {
+//   data.forEach(element => {
+//     let card = document.createElement('div');
+//     let url = element.img1;
+//     let newPrice = element.new_price;
+//     let dispayPrice = newPrice!="" ? newPrice : element.old_price;
+//     let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
+//     card.classList.add('trending-card-item');
+//     // card.classList.add('product');
+//     card.classList.add('swiper-slide');
+//     card.id = element.id;
   
-    card.innerHTML = `
-    <div class="trending-card-link" onclick="showOrder('${element.name}','${element.price}','${element.description}')">
-    <div class="trending-card-imagecont">
-    <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
-    </div>
-    <div class="trending-card-text">
-    <div class="trending-card-price"> &#8377 ${dispayPrice}</div>
-    <div class="trending-card-title">${element.name}</div>
+//     card.innerHTML = `
+//     <div class="trending-card-link" onclick="showOrder('${element.name}','${element.price}','${element.description}')">
+//     <div class="trending-card-imagecont">
+//     <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
+//     </div>
+//     <div class="trending-card-text">
+//     <div class="trending-card-price"> &#8377 ${dispayPrice}</div>
+//     <div class="trending-card-title">${element.name}</div>
    
-    <button class="trending-card-button" onclick="addToCart('${element.name}', ${dispayPrice})">ADD TO CART</button>
-  </div>
-    `;
-    document.querySelector('.trending-card-list').appendChild(card);
-  });
-
+//     <button class="trending-card-button" onclick="addToCart('${imgsrc}','${element.name}', ${dispayPrice})">ADD TO CART</button>
+//   </div>
+//     `;
+//     document.querySelector('.trending-card-list').appendChild(card);
+//   });
   
-})
-.then(data => {
-  data.forEach(element => {
-    let productCard = document.createElement('div');
-    let url = element.img1;
-    let newPrice = element.new_price;
-    let displayPrice = newPrice!="" ? newPrice : element.old_price;
-    let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
-    productCard.classList.add('product');
-    productCard.id = element.id;
-  
-    productCard.innerHTML = `
-                    <div> 
-                    <img src="${imgsrc}" alt="Cat and Dog">
-                    <h4>${element.name}</h4>
-                    <p>${element.description}</p>
-                    <p>&#9733;&#9733;&#9733;&#9733;&#9733; (214)</p>
-                    <p><b>&#8377;${displayPrice}</b></p>
-                </div>
-                <div class="product-btn-container">
-                    <button onclick="addToCart('${element.name}', ${displayPrice})">Add to Cart</button>
-                </div>
-    `;
-    document.querySelector('.products').appendChild(productCard);
-  });
-  
-})
-
-
+// })
 
 function subscribe() {
   let email = document.getElementById('email').value;
@@ -164,34 +191,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// let q = fetch('data.json')
-// .then(res => res.json())
-// .then(data => {
-//   data.forEach(element => {
-//     let productCard = document.createElement('div');
-//     let url = element.img1;
-//     let newPrice = element.new_price;
-//     let displayPrice = newPrice!="" ? newPrice : element.old_price;
-//     let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
-//     productCard.classList.add('product');
-//     productCard.id = element.id;
-  
-//     productCard.innerHTML = `
-//                     <div> 
-//                     <img src="${imgsrc}" alt="Cat and Dog">
-//                     <h4>${element.name}</h4>
-//                     <p>${element.description}</p>
-//                     <p>&#9733;&#9733;&#9733;&#9733;&#9733; (214)</p>
-//                     <p><b>&#8377;${displayPrice}</b></p>
-//                 </div>
-//                 <div class="product-btn-container">
-//                     <button onclick="addToCart('${element.name}', ${displayPrice})">Add to Cart</button>
-//                 </div>
-//     `;
-//     document.querySelector('.products').appendChild(productCard);
-//   });
-  
-// })
+
+
 
 
 const displayCategory = () =>{
@@ -222,135 +223,10 @@ const showOrder = (name, price, desc) =>{
 }
 
 
-// document.getElementById('shop-link').addEventListener('click', window.open('./shop.html', '_blank'));
 
 
 
 
-
-
-const map = new Map();
-let total = 0;
-
-const addToCart = (name, price) => {
-  console.log(name);
-  const checkoutbtn = document.getElementById('checkout-btn');
-  if (checkoutbtn) {
-    checkoutbtn.style.display = 'block';
-  }
-  
-  
-  
-  const refreshTotalPrice = () => {
-    const totalValue = document.querySelector('.total-value');
-    if (totalValue) {
-      totalValue.innerHTML = '$' + total.toFixed(2); 
-    }
-  };
-
-  
-  const refreshTotalQuantity = (itemName) => {
-    const itemQuantity = document.querySelector(`.cart-item[data-name="${itemName}"] .cart-item-quantity`);
-    if (itemQuantity) {
-      itemQuantity.innerHTML = map.get(itemName);
-    }
-  };
-
-  
-  const offset = document.getElementById('cart');
-  let totalTab = document.querySelector('.total-tab');
-  if (!totalTab) {
-    totalTab = document.createElement('div');
-    const totalText = document.createElement('div');
-    const totalValue = document.createElement('div');
-
-    totalTab.classList.add('total-tab');
-    totalText.classList.add('total-text');
-    totalValue.classList.add('total-value');
-
-    totalText.innerHTML = 'Total';
-    totalValue.innerHTML = '$' + total.toFixed(2); 
-
-    totalTab.appendChild(totalText);
-    totalTab.appendChild(totalValue);
-    totalTab.style.display = 'flex';
-    offset.appendChild(totalTab);
-  }
-
-  
-  total += price; 
-  map.set(name, (map.get(name) || 0) + 1);
-
-  refreshTotalPrice(); 
-
-
-  
-  const existingItem = document.querySelector(`.cart-item[data-name="${name}"]`);
-  if (existingItem) {
-    const itemQuantity = existingItem.querySelector('.cart-item-quantity');
-    itemQuantity.innerHTML = map.get(name);
-  } else {
-    
-    const item = document.createElement('div');
-    item.classList.add('cart-item');
-    item.setAttribute('data-name', name);
-
-    const itemName = document.createElement('div');
-    itemName.classList.add('cart-item-name');
-    itemName.innerHTML = name;
-
-    const itemQuantity = document.createElement('div');
-    itemQuantity.classList.add('cart-item-quantity');
-    itemQuantity.innerHTML = map.get(name);
-
-    const itemValue = document.createElement('div');
-    itemValue.classList.add('cart-item-value');
-
-    const itemPrice = document.createElement('div');
-    itemPrice.classList.add('cart-item-price');
-    itemPrice.innerHTML = '$' + price.toFixed(2); 
-
-    const addBtn = document.createElement('button');
-    addBtn.innerHTML = '+';
-    addBtn.addEventListener('click', () => {
-      total += price;
-      map.set(name, (map.get(name) || 0) + 1);
-      refreshTotalPrice();
-      refreshTotalQuantity(name);
-    });
-    addBtn.classList.add('addbtn');
-
-    const removeBtn = document.createElement('button');
-    removeBtn.innerHTML = '-';
-    removeBtn.addEventListener('click', () => {
-      if (map.get(name) > 0) {
-        total -= price;
-        map.set(name, map.get(name) - 1);
-        if (total < 0) total = 0; 
-        refreshTotalPrice();
-        refreshTotalQuantity(name);
-      }
-      if (map.get(name) === 0) {
-        const itemToRemove = document.querySelector(`.cart-item[data-name="${name}"]`);
-        if (itemToRemove) {
-          itemToRemove.remove();
-          map.delete(name);
-        }
-      }
-    });
-    removeBtn.classList.add('removebtn');
-
-    itemValue.appendChild(addBtn);
-    itemValue.appendChild(itemPrice);
-    itemValue.appendChild(removeBtn);
-    item.appendChild(itemName);
-    item.appendChild(itemQuantity);
-    item.appendChild(itemValue);
-    offset.appendChild(item);
-  }
-  console.log(map);
-
-};
 function headerOptionClick(e){
   e.preventDefault();
     const buttons = document.getElementsByClassName('header-menu-option');
@@ -359,7 +235,8 @@ function headerOptionClick(e){
         buttons[i].classList.remove('active-menu-option');
       }
 
-
+      // switch()
+      window.location.href=`shop.html`
     e.currentTarget.classList.add('active-menu-option');
 }
 
