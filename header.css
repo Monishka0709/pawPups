@@ -1,13 +1,9 @@
 :root {
     --blue: #001A8E;
-    /* --blue:#06adef; */
+
     --cyan: #26C8FB;
-    /* --yellow: #F9EE83; */
-    /* --yellow: #F9F718; */
     --yellow: #FCD768;
-    /* --pink: #FF57BB; */
     --pink:#FF09A4;
-    /* --beige:#FFF4E4; */
     --beige:#FFF4F8;
     --white: #ffffff;
   }
@@ -18,17 +14,8 @@ header{
     position: sticky;
     top: 0;
     z-index: 5;
-    /* background: rgb(12,0,195);
-    background: radial-gradient(circle, rgba(12,0,195,1) 0%, rgba(4,26,140,1) 89%, rgba(3,16,69,1) 100%); */
-
-    /* background: rgb(25,17,156); */
-/* background: linear-gradient(180deg, rgba(25,17,156,1) 0%, rgba(13,32,129,1) 89%, rgba(3,16,69,1) 100%); */
-
-/* background: rgb(9,190,191);
-background: linear-gradient(180deg, rgba(9,190,191,1) 0%, rgba(39,170,178,1) 89%, rgba(10,156,149,1) 100%); */
-
-background: rgb(246,241,173);
-background-image: linear-gradient(180deg, rgba(246,241,173,1) 0%, rgba(235,226,28,1) 89%);
+    background: rgb(246,241,173);
+    background-image: linear-gradient(180deg, rgba(246,241,173,1) 0%, rgba(235,226,28,1) 89%);
 }
 
 
@@ -69,7 +56,7 @@ nav{
     padding: 5px;
     color: var(--pink);
     width: fit-content;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 .search-icon{
     background-color: var(--pink);
@@ -100,6 +87,25 @@ nav{
 
 .nav-icon i{
     color: var(--white);
+}
+
+.cart-icon i{
+    position: relative;
+}
+.cart-icon i::after{
+    content: '5';
+    display: flex;
+    height: 12px;
+    width: 12px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    font-size: 9px;
+    right: -3px;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .modal-backdrop{

@@ -122,13 +122,15 @@ let p = fetch('data.json')
             card.innerHTML = `
                 <div class="trending-card-link" onclick="showOrder('${element.name}', '${displayPrice}', '${element.description}')">
                     <div class="trending-card-imagecont">
-                        <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
+                        <img class="trending-card-image" src="${imgsrc}" alt="${element.name}" onclick="redirectToOrder('${element.id}')">
                     </div>
                     <div class="trending-card-text">
-                        <div class="trending-card-price">&#8377; ${displayPrice}</div>
                         <div class="trending-card-title">${element.name}</div>
-                        <button class="trending-card-button" onclick="addToCart('${imgsrc}', '${element.name}', ${displayPrice})">ADD TO CART</button>
+                        <div class="trending-card-price">MRP: <del>&#8377;${element.old_price}</del><b>&#8377;<span class="product-price" style="font-family: system-ui; font-weight: 500;">${displayPrice}</span></b> | <span class="product-discount" style="font-family: system-ui; font-weight: 500; background-color: lightgreen; color: #fff; padding: 5px;" >10% OFF</span></div>
+                        
+                        
                     </div>
+                    <button class="trending-card-button" onclick="addToCart('${imgsrc}', '${element.name}', ${displayPrice})">ADD TO CART</button>
                 </div>
             `;
 
@@ -137,37 +139,9 @@ let p = fetch('data.json')
     })
     .catch(error => console.error(`Fetch error: ${error.message}`));
 
-
-// let p = fetch('data.json')
-// .then(res => res.json())
-// .then(data => {
-//   data.forEach(element => {
-//     let card = document.createElement('div');
-//     let url = element.img1;
-//     let newPrice = element.new_price;
-//     let dispayPrice = newPrice!="" ? newPrice : element.old_price;
-//     let imgsrc  = "https://lh3.googleusercontent.com/d/" + url;
-//     card.classList.add('trending-card-item');
-//     // card.classList.add('product');
-//     card.classList.add('swiper-slide');
-//     card.id = element.id;
-  
-//     card.innerHTML = `
-//     <div class="trending-card-link" onclick="showOrder('${element.name}','${element.price}','${element.description}')">
-//     <div class="trending-card-imagecont">
-//     <img class="trending-card-image" src="${imgsrc}" alt="${element.name}">
-//     </div>
-//     <div class="trending-card-text">
-//     <div class="trending-card-price"> &#8377 ${dispayPrice}</div>
-//     <div class="trending-card-title">${element.name}</div>
-   
-//     <button class="trending-card-button" onclick="addToCart('${imgsrc}','${element.name}', ${dispayPrice})">ADD TO CART</button>
-//   </div>
-//     `;
-//     document.querySelector('.trending-card-list').appendChild(card);
-//   });
-  
-// })
+    function redirectToOrder(productId) {
+      window.location.href = `order.html?id=${productId}`;
+  }
 
 function subscribe() {
   let email = document.getElementById('email').value;

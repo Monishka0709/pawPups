@@ -19,6 +19,7 @@
     <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
     <title>PawPups</title>
     <script src="./main.js" defer></script>
+    
 </head>
 <body>
 
@@ -145,15 +146,25 @@
         
         <main>
             <div class="search-sort">
-                <input type="text" placeholder="Search products...">
+                <!-- <input type="text" placeholder="Search products..."> -->
                 <select>
                     <option>Most Popular</option>
                     <option>Price Low-High</option>
                     <option>Price High-Low</option>
                 </select>
+                <select class="small-device-category">
+                    <option>All Categories</option>
+                    <option>Pet Food</option>
+                    <option>Toys & Accessories</option>
+                    <option>Health & Wellness</option>
+                    <option>Grooming Supplies</option>
+                </select>
+                <label for="priceRange" class="small-device-category">Price Range:</label>
+                <input class="small-device-category" type="range" min="0" max="10000" value="5000" id="priceRange">
+                <p class="small-device-category">Max Price: ₹<span id="priceValue">5000</span></p>
             </div>
             
-            <div class="products">
+            <div class="products product-list">
                     
             </div>
         </main>

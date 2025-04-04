@@ -1,26 +1,21 @@
 /* @import url("https://use.typekit.net/fcz5wla.css"); */
 @import url("https://use.typekit.net/fcz5wla.css");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
 @import url("./header.css");
 @import url("./hero.css");
-@import url("./order.css");
-@import url("./login.css");
-/* @import url("./account.css"); */
-@import url("./shop.css");
 @import url("./footer.css");
 
 
 :root {
   --blue: #001A8E;
-  /* --blue: #0528C5; */
-  /* --blue:#87CEEB; */
   --cyan: #26C8FB;
-  /* --yellow: #F9EE83; */
-  /* --yellow: #F9F718; */
   --yellow: #FCD768;
-  /* --yellow: #FFAD28; */
-  /* --pink: #FF57BB; */
   --pink:#FF09A4;
-  /* --beige:#FFF4E4; */
+  --green:#00796b;
+  --red: rgb(228, 0, 0);
+  --primaryFont: "alegreya-sans-sc", sans-serif;
+  --secondaryFont: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --thirdFont: 'Lato', sans-serif;
   --beige:#FFF4F8;
   --white: #ffffff;
 }
@@ -29,22 +24,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* color: whitesmoke; */
-    /* font-family: "cooper-black-std", serif;
-    font-weight: 400;
-    font-style: normal; */
-
-    font-family: "alegreya-sans-sc", sans-serif;
-font-weight: 900;
-font-style: normal;
+    font-style: normal;
 
 
 
 }
-/* i{
-  color: var(--pink) ;
-} */
-
 
 .cart-item-img{
   width: 4rem;
@@ -127,20 +111,19 @@ body{
     overflow-x: scroll;
     padding: 1rem 0;
     border: 2px solid #e0dede;
-    margin: 5rem 0;
+    margin: 2rem 0;
     height: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    flex-wrap: wrap;
     align-items: center;
 }
 
 .featured-card{
     
-    width: 13rem;
+    width: fit-content;
     /* height: 13rem; */
     height: auto;
     outline: none;
@@ -171,7 +154,7 @@ body{
 
 
   .trending-container{
-    padding: 3rem 2rem;   
+    padding: 2rem;   
     
   }
   .trendingbar{
@@ -182,7 +165,8 @@ body{
 
   .trending-title{
     color: var(--cyan);
-    /* text-shadow: 3px 3px var(--yellow); */
+    font-family: var(--primaryFont);
+    text-align: center;
     text-shadow: 0 0 5px #fff,
     0 0 10px #fff,
     0 0 20px var(--yellow),
@@ -242,13 +226,15 @@ body{
 
   .trending-card-link{
     width: 13rem;
-    height: 30rem;
+    height: 23rem;
+    border: 2px solid #e0dede;
     user-select: none;
     display: block;
     position: relative;
     margin: 0rem 0.5rem 2rem 0.5rem;
     margin-bottom: 2rem;
-    
+    padding: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     border-radius: 6px;
 
   }
@@ -259,7 +245,7 @@ body{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    border: 2px dashed #363434;
+    
     border-radius: 5px;
 
   }
@@ -273,47 +259,41 @@ body{
     
   }
 
-  
+  b{
+    color: var(--red);
+  }
 
   .trending-card-price{
-    color: #6633cc;
+    color: grey;
     transition: 0.2 ease;
     font-weight: 700;
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
+    margin:  0;
+    font-size: 0.8rem;
     width: fit-content;
   }
   .trending-card-list .trending-card-link .trending-card-title{
     font-weight: 600;
-    /* color: #363434; */
-    color: var(--pink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-family: var(--secondaryFont);
+    color: var(--blue);
+    letter-spacing: -1px;
+    /* color: var(--pink); */
+    white-space: break-word;
   }
 
-  .trending-card-list .trending-card-link .trending-card-desc{
-    color: #363434;
-    height: 6rem;
-
-    /* white-space: nowrap; */
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  
   
 
   .trending-card-list .trending-card-link .trending-card-button{
     height: 2.5rem;
-    width: 8rem;
-    border-radius: 50px;
-    background-color: var(--pink);
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    background-color: var(--red);
     margin-top: 1rem;
     cursor: pointer;
     position: absolute;
-    /* top: 15rem; */
-    font-weight: 600;
-    left: calc(50% - 3.4rem);
-    /* opacity: 0; */
+    bottom:10px;
+    left: 10px;
+    font-weight: 700;
     color: var(--beige);
     transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
     border: none;
@@ -321,7 +301,7 @@ body{
     
   }
 
-  .trending-card-link:hover > .trending-card-imagecont{
+  .trending-card-link:hover{
     cursor: pointer;
     border: 2px solid var(--yellow);
 
@@ -334,19 +314,12 @@ body{
   .trending-card-button:hover{
     background-color: var(--yellow) !important;
     color: var(--blue) !important;
-    box-shadow: 0 0 5px #fff,
-    0 0 3px #fff,
-    0 0 5px var(--yellow),
-    0 0 10px var(--yellow);
+    
     
   }
 
 
-  .trending-card-link:hover > .trending-card-button{
-    opacity: 1;
-    top: 11rem;
-    
-  }
+  
 
 
   .swiper-button-next, .swiper-button-prev{
@@ -374,6 +347,11 @@ body{
     border-radius: 12px;
   }
 
+  .book-btn{
+    background-color: var(--red) !important;
+    border: var(--red) 1px solid !important;
+    width: 100% !important;
+  }
 
 .articles-btn{
   background-color: transparent; 
@@ -526,9 +504,16 @@ body{
 
 .community-heading {
     /* background: #00796b; */
-   
+    font-family: var(--secondaryFont);
+    font-weight: 500;
     text-align: center;
     padding: 20px;
+}
+.community-heading h1{
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 3rem;
+    font-family: var(--primaryFont);
 }
 .actions{
     margin-top: 2rem;      
@@ -543,6 +528,19 @@ body{
 .feed {
     flex: 2;
     margin-right: 20px;
+}
+
+.feed h3, .community h3, .topics h3, .events h3{
+  font-family: var(--thirdFont);
+  color: var(--blue);
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  
+}
+.feed p, .community p{
+
+  font-family: var(--thirdFont);
 }
 
 .post {
@@ -564,15 +562,27 @@ body{
     cursor: pointer;
     margin-right: 10px;
 }
+
+
 .community button{
     background: #00796b;
     color: white;
     padding: 10px;
     border: none;
+    font-family: var(--primaryFont);
+    font-weight: 900;
     border-radius: 5px;
     cursor: pointer;
 }
+.community button:hover{
+  background-color: var(--cyan);
+  color: whitesmoke;
+}
 
+.community button:focus, .community button:active{
+  background-color: var(--pink);
+  color: whitesmoke;
+}
 .actions a{
     
     color: #00796b;
@@ -677,10 +687,13 @@ body{
 
 .newsletter-title{
   font-size: 4rem;
+  font-weight: 900;
+  font-family: var(--primaryFont);
 }
 
 .newsletter-description{
   font-size: 1.2rem;
+  font-family: var(--secondaryFont);
   letter-spacing: 2px;
 }
 .overlay {
@@ -736,8 +749,8 @@ body{
   .whatsapp-container{
     z-index: 2;
     position: fixed;
-    bottom: 5.5rem;
-    right: 2rem;
+    bottom: 2rem;
+    left: 2rem;
     height: 2.5rem;
     width: 2.5rem;
     background-color: transparent;
@@ -891,10 +904,7 @@ body{
     color: #363434;
   }
 
-.book-btn{
-  background-color: var(--pink) !important;
-  border-color: var(--pink) !important;
-}
+
 
 .card-title{
   color: var(--blue);
@@ -903,6 +913,7 @@ body{
 .card-text{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   letter-spacing: -1px;
+  user-select: text !important;
 }
 
   @media screen and (max-width:1342px) {
@@ -991,6 +1002,13 @@ body{
     .hero-img{
       display: none;
     }
+    .hero-container{
+      background-image: url('./img/dog.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-color: rgba(255, 255, 255, 0.3)
+    }
     
     .shop-now-container{
       padding: 0.5rem 1rem;
@@ -1052,6 +1070,16 @@ body{
     .icon {
         display: none;
     }
+
+    .featured-card img{
+      height: 4rem;
+      width: 4rem;
+
+    }
+    .featured-card div{
+      font-size: 1rem;
+
+    }
     nav{
         position:relative;
         
@@ -1085,7 +1113,7 @@ body{
      
     
     .search{
-        font-size: 0.7rem;
+        font-size: 1rem;
         min-width: 4.5rem;
         width: 29vw;
     }
@@ -1147,6 +1175,7 @@ body{
     }
     .trending-card-link{
         width: 14rem;
+        height: 20rem;
     }
 
     .closebtn{
@@ -1186,6 +1215,12 @@ body{
         /* flex-wrap: wrap; */
         padding: 0;
     }
+    .featured-content{
+      padding: 1rem 10px;
+    }
+    .featured-title{
+      font-size: 1.4rem;
+    }
 
     .newsletter{
       padding: 1rem 0.5rem;
@@ -1199,9 +1234,9 @@ body{
         height: 15rem;
     }
     
-    .swiper-button-next, .swiper-button-prev{
+    /* .swiper-button-next, .swiper-button-prev{
         display: none !important;
-    }
+    } */
 
     .hero-title{
       font-size: 1.5rem;

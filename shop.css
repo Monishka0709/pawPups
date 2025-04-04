@@ -22,6 +22,9 @@
 .product h4{
     /* color: #6633cc; */
     color: var(--blue);
+    font-size: 1.15rem;
+    font-family: var(--secondaryFont);
+
 }
 .product p{
     white-space: nowrap;
@@ -29,18 +32,19 @@
     text-overflow: ellipsis;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     letter-spacing: -1px;
+    margin-bottom: 0;
     font-weight: 400;
 }
 
 del{
-    color: red;
+    color: gray;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 b{
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #6633cc;
+    color: var(--red);
     font-weight: 700;
     font-size: 1.2rem;
 }
@@ -87,22 +91,45 @@ main {
     gap: 20px;
 }
 
+.small-device-category{
+    display: none;
+}
 .product {
     background: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    border: 1px solid #ccc;
     position: relative;
     width: 250px;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 }
 
-.product img {
+.product-image-container{
+    /* width: calc(100% + 2rem); */
     width: 100%;
+    padding-bottom: 1rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* object-fit: cover; */
+}
+
+.product img {
+    width: 90%;
+    height: auto;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover;
+
+}
+.product img:hover{
+    cursor: pointer;
+    transform: scale(1.15);
 }
 
 .new, .bestseller {
@@ -121,11 +148,14 @@ main {
 }
 
 .product-btn-container> button {
-    background-color: #28a745;
+    /* background-color: #28a745; */
+    background-color: var(--red);
+    font-weight: 600;
+    font-size: 1.2rem;
     color: white;
     border: none;
     
-    padding: 10px;
+    padding: 9px;
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
@@ -140,7 +170,9 @@ main {
 /* .product[data-category] {
     display: none;
 } */
-
+.product-list{
+    justify-content: center;
+}
 
 .product-btn-container > button:hover{
     background-color: var(--cyan) ;
@@ -160,9 +192,69 @@ main {
   }
 
 
+.btn{
+    background-color: transparent !important;
+    cursor: pointer;
+}
+.btn:focus{
+    box-shadow: none !important;
+}
+.btn:hover{
+    background-color: var(--yellow) !important;
+}
+@media screen and (max-width: 768px) {
+   .product{
+    width: 200px;
+   }
+   .product-name{
+    font-size: 0.8rem !important;
+
+   }
+   .product  p{
+    font-size: 0.8rem;
+   }
+    
+}
+
+@media  (max-width: 1025px) {
+    .product{
+        width: 220px;
+       }
+    
+}
+
 @media (max-width: 500px) {
     .shop-sidebar{
         display: none;
+    }
+    main{
+        margin: 0;
+    }
+    input,select, label{
+        width: 100%;
+    }
+    .small-device-category{
+        display: block;
+    }
+    .product{
+        width: 172px;
+       }
+
+}
+
+@media  (max-width: 400px) {
+    .product{
+        width: 129px;
+       }
+
+    .product-name{
+        margin-bottom: 0.2rem;
+    }
+
+    .product button{
+        padding: 5px 0;
+        font-size: 0.7rem;
+        margin-top: 7px;
     }
     
 }
