@@ -1,3 +1,4 @@
+
 .shop-container {
     display: flex;
     padding: 20px;
@@ -27,9 +28,9 @@
 
 }
 .product p{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     letter-spacing: -1px;
     margin-bottom: 0;

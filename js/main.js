@@ -36,61 +36,6 @@ new Swiper('.trending-card-wrapper', {
 
 })
 
-const mainSearch = document.getElementById('search')
-const trendingProducts = document.querySelectorAll(".product");
-mainSearch.addEventListener("input", () => {
-  // const searchTerm = search.value.toLowerCase();
-  // trendingProducts.forEach(product => {
-  //     const title = product.querySelector("h4").innerText.toLowerCase();
-  //     const desc = product.querySelector("p").innerText.toLowerCase();
-  //     product.style.display = title.includes(searchTerm) || desc.includes(searchTerm) ? "block" : "none";
-  // });
-  console.log("clicked");
-});
-
-// window.addEventListener("load", () => {
-//   autoSlide();
-// })
-
-// function autoSlide() {
-//   setInterval(() => {
-//      slide(getItemActiveIndex() + 1);
-//   }, 3000); 
-// }
-
-// function slide(toIndex) {
-//   const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
-//   const itemActive = document.querySelector(".carousel_item__active");
-
-//   // check if toIndex exceeds the number of carousel items
-//   if (toIndex >= itemsArray.length) {
-//      toIndex = 0;
-//   }
-
-//   const newItemActive = itemsArray[toIndex];
-
-//   // start transition
-//   newItemActive.classList.add("carousel_item__pos_next");
-//   setTimeout(() => {
-//      newItemActive.classList.add("carousel_item__next");
-//      itemActive.classList.add("carousel_item__next");
-//   }, 20);
-
-//   // remove all transition class and switch active class
-//   newItemActive.addEventListener("transitionend", () => {
-//      itemActive.className = "carousel_item";
-//      newItemActive.className = "carousel_item carousel_item__active";
-//   }, {
-//      once: true
-//   });
-// }
-
-// function getItemActiveIndex() {
-//   const itemsArray = Array.from(document.querySelectorAll(".carousel_item"));
-//   const itemActive = document.querySelector(".carousel_item__active");
-//   const itemActiveIndex = itemsArray.indexOf(itemActive);
-//   return itemActiveIndex;
-// }
 
 let p = fetch('data.json')
     .then(res => {
@@ -112,7 +57,7 @@ let p = fetch('data.json')
         data.forEach(element => {
             let card = document.createElement('div');
             let url = element.img1;
-            let newPrice = element.new_price;
+            let newPrice = element.mrp;
             let displayPrice = newPrice && newPrice !== "" ? newPrice : element.old_price;
             let imgsrc = "https://lh3.googleusercontent.com/d/" + url;
 
@@ -120,17 +65,17 @@ let p = fetch('data.json')
             card.id = element.id;
 
             card.innerHTML = `
-                <div class="trending-card-link" onclick="showOrder('${element.name}', '${displayPrice}', '${element.description}')">
+                <div class="trending-card-link" onclick="redirectToOrder(${element.sr_no})">
                     <div class="trending-card-imagecont">
                         <img class="trending-card-image" src="${imgsrc}" alt="${element.name}" onclick="redirectToOrder('${element.id}')">
                     </div>
                     <div class="trending-card-text">
-                        <div class="trending-card-title">${element.name}</div>
-                        <div class="trending-card-price">MRP: <del>&#8377;${element.old_price}</del><b>&#8377;<span class="product-price" style="font-family: system-ui; font-weight: 500;">${displayPrice}</span></b> | <span class="product-discount" style="font-family: system-ui; font-weight: 500; background-color: lightgreen; color: #fff; padding: 5px;" >10% OFF</span></div>
+                        <div class="trending-card-title">${element.title}</div>
+                        <div class="trending-card-price">MRP: <del>&#8377;${element.mrp}</del><b>&#8377;<span class="product-price" style="font-family: system-ui; font-weight: 500;">${displayPrice}</span></b> | <span class="product-discount" style="font-family: system-ui; font-weight: 500; background-color: lightgreen; color: #fff; padding: 5px;" >10% OFF</span></div>
                         
                         
                     </div>
-                    <button class="trending-card-button" onclick="addToCart('${imgsrc}', '${element.name}', ${displayPrice})">ADD TO CART</button>
+                    <button class="trending-card-button" onclick="addToCart('${element.sr_no}','${imgsrc}', '${element.title}', ${displayPrice})">ADD TO CART</button>
                 </div>
             `;
 
@@ -162,6 +107,9 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+function redirectToOrder(productId) {
+  window.location.href = `./order.html?id=${productId}`
+}
 
 
 
@@ -173,28 +121,15 @@ const displayCategory = () =>{
    const menuBar = document.getElementById('category-menu');
    menuBar.style.display = "flex";
 
-  // console.log("hI");
 }
 
 
 const hideCategory = () =>{
   const menuBar = document.getElementById('category-menu');
   menuBar.style.display = "none";
-
- // console.log("hI");
 }
 
 
-
-
-
-
-const showOrder = (name, price, desc) =>{
-  console.log(name);
-  console.log(price);
-  console.log(desc);
-
-}
 
 
 

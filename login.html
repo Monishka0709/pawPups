@@ -24,7 +24,10 @@
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
     <title>PawPups</title>
-    <script src="main.js" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="main.js" defer></script> -->
+    
 </head>
 <body>
     
@@ -54,16 +57,20 @@
 
         
 
-        <form action="" class="login-form">
+        <form action="" name="userLogin" class="login-form">
             <div class="heading">Login</div>
             <div class="login-input-container">
                 <div class="email-field">
-                    <label for="email" class="labels" style="display: flex;"> Email <div style="color: red;margin-left: 0.2rem; display: flex; align-items: center; justify-content: center;">*</div></label>
-                <input type="text" id="email-input" placeholder="Email" class="login-input" required>
+                    <label for="email" class="labels" style="display: flex;"> Mobile <div style="color: red;margin-left: 0.2rem; display: flex; align-items: center; justify-content: center;">*</div></label>
+                <input type="text" id="mobileInput" placeholder="Email" class="login-input" required>
                 </div>
                 <div class="password-field">
                     <label for="password" class="labels" style="display: flex;">Password <div style="color: red;margin-left: 0.2rem; display: flex; align-items: center; justify-content: center;">*</div></label>
-                <input type="password" id="password" placeholder="Password" class="login-input" required>
+                <input type="password" id="passwordInput" placeholder="Password" class="login-input" required>
+                </div>
+                <div class="password-field">
+                    <label for="password" class="labels" style="display: flex;">Department Id<div style="color: red;margin-left: 0.2rem; display: flex; align-items: center; justify-content: center;">*</div></label>
+                <input type="password" id="departmentIdInput" placeholder="Department Id" class="login-input" required>
                 </div>
                 
                 
@@ -75,13 +82,14 @@
                 <a href="" class="instagram-btn"><i class="bi bi-instagram"></i></a>
             </div>
             <div class="login-button-container">
-                <button class="login-button">Login</button>
+                <button class="login-button" >Login</button>
             </div>
             <div class="register-container">
                 <p>Don't have an account? <a href="./register.html" target="_blank" class="register-link"> Register</a></p>
             </div>
         </form>
     </section>
+    <script src="login.js"></script>
     
 </body>
 </html>

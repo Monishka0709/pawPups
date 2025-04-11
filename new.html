@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script>
+        let p = fetch('https://digihand.co.in/arun1/api/AllPickupman')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                if (!data || data.length === 0) {
+                    console.error("Error: No data found in 'data.json'");
+                    return;
+                }
+                data.orders.forEach(element => {
+                    document.getElementById("root").innerHTML += `
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${element.id}</h5>
+                        <p class="card-text">${element.temporary_order_id}</p>
+                        <img src="${element.image_url}">
+                    </div>`
+                    
+                });
+            
+                
+            })
+            .catch(error => console.error("Error fetching data:", error));
+    </script>
+</body>
+</html>

@@ -111,7 +111,6 @@ body{
     overflow-x: scroll;
     padding: 1rem 0;
     border: 2px solid #e0dede;
-    margin: 2rem 0;
     height: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
@@ -623,8 +622,8 @@ body{
 
 .social-media-container{
     font-family: Arial, sans-serif;
-    /* background-color: #a7d7a9; */
-  background-color: #48cb48;
+    background-color: #a7d7a9;
+  /* background-color: #48cb48; */
     margin: 0;
     padding: 6rem 0;
     display: flex;
@@ -1060,6 +1059,10 @@ body{
   flex-direction: column;
   text-align: center;
 }
+
+.articles-btn{
+  margin: 0;
+}
   
 }
 
@@ -1079,6 +1082,9 @@ body{
     .featured-card div{
       font-size: 1rem;
 
+    }
+    .trending-title{
+      font-size: 2rem;
     }
     nav{
         position:relative;
@@ -1204,6 +1210,10 @@ body{
 
   .dogs-product-container{
     grid-template-columns: auto;
+  }
+
+  .featured-card div{
+    font-size: 0.7rem;
   }
   
 }

@@ -38,7 +38,7 @@
                   <li><a class="dropdown-item" href="./community.html">Content Hub</a></li>
                   <li><a class="dropdown-item" href="./services.html">Offers</a></li>
                   <li><a class="dropdown-item" href="./services.html">Brands</a></li>
-                  <li><a class="dropdown-item" href="./services.html">Contact</a></li>
+                  <li><a class="dropdown-item" href="#footer">Contact</a></li>
                 </ul>
             </div> 
             <div class="logo-container"><img src="./assets/logo.png" alt=""> </div>
@@ -62,7 +62,7 @@
                 <button type="button nav-icon" data-bs-toggle="offcanvas" id="cart-icon"
                     style="background: none; border: none; outline: none; " data-bs-target="#offcanvasRight" class="cart-icon nav-icon"
                     aria-controls="offcanvasRight">
-                    <i class="fa-solid fa-cart-shopping" ></i>
+                    <i class="fa-solid fa-cart-shopping cart-i-element" ></i>
                     <div id="cart-item-numbers"></div>
                     <div>Cart</div>
                 </button>
@@ -119,6 +119,10 @@
             <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
                 <div class="menu-text">Offers</div>
                 <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+            </div>
+
+            <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                <div class="menu-text">Brands</div>
             </div>
 
             <div class="header-menu-option" id="contact" onclick="document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });">
@@ -182,19 +186,19 @@
             <div class="featured-cards-container" style="border: none;">
                 <a href="./shop.html" class="featured-card">
                     <img src="./assets/featured1.png" alt="">
-                    <div>Pet Food</div>
+                    <div>Pet Products</div>
                 </a>
-                <a href="./shop.html" class="featured-card">
+                <a href="./services.html" class="featured-card">
                     <img src="./assets/featured2.png" alt="">
-                    <div>Grooming</div>
+                    <div>Pet Services</div>
                 </a>
-                <a href="./shop.html" class="featured-card">
+                <a href="./community.html" class="featured-card">
                     <img src="./assets/featured3.png" alt="">
                     <div>Community</div>
                 </a>
-                <a href="./shop.html" class="featured-card">
+                <a href="./Content.html" class="featured-card">
                     <img src="./assets/featured4.png" alt="">
-                    <div>Learning Hub</div>
+                    <div>Education</div>
                 </a>
                 
 
@@ -231,9 +235,9 @@
 
 
 
-    <div class="category-menu" id="category-menu" onmouseover="displayCategory()" onmouseout="hideCategory()">
+    <!-- <div class="category-menu" id="category-menu" onmouseover="displayCategory()" onmouseout="hideCategory()">
             <div class="category-menu-item">
-                <div class="category">FOOD</div>
+                <div class="category">DOG</div>
                 <div class="subcategory">Dry Food</div>
                 <div class="subcategory">Wet Food</div>
                 <div class="subcategory">Puppy Food </div>
@@ -253,7 +257,7 @@
 
         </div>
 
-    </div>
+    </div> -->
 
 
 

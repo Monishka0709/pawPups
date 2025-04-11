@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -21,9 +22,9 @@
     
     <script src="https://kit.fontawesome.com/c28cdaa5d6.js" crossorigin="anonymous"></script>
     
-    <script src="./main.js" defer></script>
+    <script src="./js/main.js" defer></script>
     <title>Checkout</title>
-    
+    <link rel="stylesheet" href="./css/footer.css">
     <style>
         :root {
   --blue: #001A8E;
@@ -140,6 +141,33 @@ nav{
     font-weight: 400;
 }
 
+.cart-item > div{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    margin-left: 1.5rem;
+}
+
+.order-item-quantity{
+    background: lightgrey;
+    width: 5rem;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity-button{
+    border: none;
+    border-right: 1px solid grey;
+    width: 35%;
+    background: none;
+}
+.quantity-button:nth-child(2){
+    border-left: 1px solid grey;
+    border-right: none;
+
+}
 .header-menu {
     width: 100%;
     display: flex;
@@ -265,9 +293,9 @@ nav{
                 display: flex;
                 background-color: #fff;
                 padding:  20px 0;
-                width: 100%;
+                width: 95%;
                 margin: auto;
-                max-width: 1000px;
+                max-width: 1300px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 margin-top: 20px;
             }
@@ -275,13 +303,22 @@ nav{
                 padding: 20px;
             }
             .left-section {
-                flex: 2;
+                flex: 1;
                 border-right: 1px solid #ddd;
             }
             .right-section {
                 flex: 1;
             }
-            h2 {
+            .coupon-section {
+            background-color: #ffe8e8;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0 0 0 ;
+        }
+            .checkout-container h2 {
                 margin-bottom: 15px;
                 font-family: var(--primaryFont);
                 font-weight: 900;
@@ -304,10 +341,14 @@ nav{
                 color: red;
                 font-size: 14px;
             }
-            .order-summary {
+            .order-summary, #total-section {
                 background-color: #f1f1f1;
                 padding: 15px;
                 border-radius: 5px;
+            }
+
+            #total-section {
+                border-radius: 0 0 5px 5px;
             }
             .pay-btn {
                 background-color: var(--cyan);
@@ -320,13 +361,24 @@ nav{
                 border-radius: 5px;
             }
 
+            .pay-btn:hover {
+                background-color: #1ca9d4;
+            }
+            .pay-btn:focus {
+                background-color: var(--blue);
+            }
+
             @media screen and (max-width: 768px) {
                 .checkout-container {
                     flex-direction: column;
                 
-            }}
+            }
+            .checkout-container h2 {
+                font-size: 1.5rem;
+            }
+        }
         </style>
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
         <header id="header">
@@ -417,6 +469,11 @@ nav{
                     <div class="menu-text">Content Hub</div>
                     <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
                 </div>
+
+                <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
+                    <div class="menu-text">Brands</div>
+                    <div class="menu-icon"><i class="fa-solid fa-angle-down"></i></div>
+                </div>
     
                 <div class="header-menu-option" onclick="headerOptionClick(event)" onmouseover="displayCategory()" onmouseout="hideCategory()">
                     <div class="menu-text">Offers</div>
@@ -433,18 +490,26 @@ nav{
     
         <section class="checkout-container">
             <div class="left-section">
+                <div style="text-align: right; font-size: 0.9rem;">Already have an account? <a href="./login.html">Login</a></div>
                 <h2>Contact Information</h2>
                 <input type="text" placeholder="Enter Mobile Number">
                 
                 <h2>Shipping Address</h2>
-                <input type="text" placeholder="First Name">
-                <input type="text" placeholder="Last Name">
-                <input type="text" placeholder="Street Address">
-                <input type="text" placeholder="Street Address Line 2">
-                <select>
-                    <option>India</option>
-                </select>
-                <input type="text" placeholder="Region">
+                <div class="name-field" style="display: flex; gap: 10px;"><input type="text" placeholder="First Name">
+                    <input type="text" placeholder="Last Name">
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" placeholder="Street Address">
+                    <input type="text" placeholder="Street Address Line 2">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <select>
+                        <option>India</option>
+                    </select>
+                    <input type="text" placeholder="Region">
+                </div>
+                
                 <input type="text" placeholder="City">
                 <input type="text" placeholder="Zip/Postal Code">
                 <input type="text" placeholder="Phone Number">
@@ -457,43 +522,191 @@ nav{
                 <div class="order-summary" id="order-summary">
                     <p>Loading order details...</p>
                 </div>
+                <div class="coupon-section">
+                    <span style="margin: auto; background-color:rgb(241, 27, 27); color: whitesmoke; padding: 10px; border-radius: 20px;"><i class="fa-solid fa-tag"></i> Available Coupons <i class="fa-solid fa-angle-down"></i></span>
+                </div>
+                <div id="total-section">
+                
+                </div>
                 <h2>Payment Method</h2>
-                <div class="payment-option"><input type="radio" name="payment" checked> Razorpay</div>
+                <div class="payment-option"><input type="radio" name="payment" value="online" checked> Razorpay</div>
+                <div class="payment-option"><input type="radio" name="payment" value="online" > UPI</div>
+                <div class="payment-option"><input type="radio" name="payment" > Cash on Delivery</div>
                 
                 <!-- <p class="error-message">Sorry, your pincode is not under serviceable location.</p> -->
-                <button class="pay-btn">Pay with Razorpay</button>
+                <button id="place-order-btn" class="pay-btn">Place Order</button>
             </div>
         </section>
     
+        <footer id="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>PawPups</h3>
+                    <p>India's premier destination for pet products, services, community, and education.</p>
+                    <div class="social-icons">
+                        <a href="#">🐦</a>
+                        <a href="#">📘</a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#">▶</a>
+                        <a href="#">💬</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#">Dog Products</a></li>
+                        <li><a href="#">Cat Products</a></li>
+                        <li><a href="#">Bird Products</a></li>
+                        <li><a href="#">Small Pets</a></li>
+                        <li><a href="#">Fish & Aquatics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Grooming</a></li>
+                        <li><a href="#">Veterinary Care</a></li>
+                        <li><a href="#">Training</a></li>
+                        <li><a href="#">Pet Sitting</a></li>
+                        <li><a href="#">Dog Walking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Help & Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PawsomeIndia. All rights reserved. | <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
+            </div>
+        </footer>
+        
+    
+        
         <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const cart = JSON.parse(localStorage.getItem("cart")) || [];
-                const orderSummaryDiv = document.getElementById("order-summary");
-                
-                if (cart.length === 0) {
-                    orderSummaryDiv.innerHTML = "<p>Your cart is empty.</p>";
-                    return;
-                }
-                
-                let totalMRP = 0;
-                let discount = 0;
-                let totalAmount = 0;
-                let orderHTML = "";
-                
-                cart.forEach(item => {
-                    totalMRP += item.price * item.quantity;
-                    discount += (item.discount || 0) * item.quantity;
-                    totalAmount += (item.price - (item.discount || 0)) * item.quantity;
-                    orderHTML += `<p>${item.name} (x${item.quantity}) - ₹${(item.price - (item.discount || 0)) * item.quantity}</p>`;
-                });
-                
-                orderHTML += `<p>Total MRP: ₹${totalMRP.toFixed(2)}</p>`;
-                orderHTML += `<p>Discount: -₹${discount.toFixed(2)}</p>`;
-                orderHTML += `<p>Delivery Charges: Not yet calculated</p>`;
-                orderHTML += `<p><strong>Total Amount: ₹${totalAmount.toFixed(2)}</strong></p>`;
-                
-                orderSummaryDiv.innerHTML = orderHTML;
-            });
+            
+    const getCart = () => JSON.parse(localStorage.getItem("cart")) || [];
+    const setCart = (cart) => localStorage.setItem("cart", JSON.stringify(cart));
+
+    const updateCartUI = () => {
+        const cart = getCart();
+        const orderSummaryDiv = document.getElementById("order-summary");
+        const totalSummaryDiv = document.getElementById("total-section");
+
+        if (cart.length === 0) {
+            orderSummaryDiv.innerHTML = "<p>Your cart is empty.</p>";
+            totalSummaryDiv.innerHTML = "";
+            return;
+        }
+
+        let totalMRP = 0;
+        let discount = 0;
+        let totalAmount = 0;
+        let orderHTML = "";
+        let totalHTML = "";
+
+        cart.forEach(item => {
+            const itemPrice = parseFloat(item.price) || 0;
+            const itemDiscount = parseFloat(item.discount) || 0;
+
+            totalMRP += itemPrice * item.quantity;
+            discount += itemDiscount * item.quantity;
+            totalAmount += (itemPrice - itemDiscount) * item.quantity;
+
+            orderHTML += 
+            `<div class="order-summary-item" style="display: flex; justify-content: flex-start; margin-bottom: 1rem;">
+                <img src="${item.img}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover;">&nbsp;
+                <div>
+                    <strong>${item.name}</strong><br/> 
+                    <div style=" margin: 0.5rem 0 0 0; display: flex; justify-content: space-between; align-items: center;">
+                        <span class="order-item-quantity">
+                            <button class="quantity-button" onclick="changeQuantity('${item.name}', 1)">+</button>
+                                ${item.quantity}
+                            <button class="quantity-button" onclick="changeQuantity('${item.name}', -1)">-</button>
+                        </span>
+                        <span class="order-item-price" style="font-weight: 700; color: var(--blue);">₹${itemPrice.toFixed(2)}</span>
+                    </div> 
+                </div>
+            </div>`;
+        });
+
+        totalHTML += `<p>Total MRP: ₹${totalMRP.toFixed(2)}</p>`;
+        totalHTML += `<p>Discount: -₹${discount.toFixed(2)}</p>`;
+        totalHTML += `<p>Delivery Charges: Not yet calculated</p>`;
+        totalHTML += `<p><strong>Total Amount: ₹${totalAmount.toFixed(2)}</strong></p>`;
+
+        orderSummaryDiv.innerHTML = orderHTML;
+        totalSummaryDiv.innerHTML = totalHTML;
+    };
+
+    const changeQuantity = (name, delta) => {
+        const cart = getCart();
+        const itemIndex = cart.findIndex(item => item.name === name);
+        if (itemIndex !== -1) {
+            cart[itemIndex].quantity += delta;
+            if (cart[itemIndex].quantity <= 0) {
+                cart.splice(itemIndex, 1);
+            }
+            setCart(cart);
+            updateCartUI();
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", updateCartUI);
+
+    document.getElementById("place-order-btn").addEventListener("click", async () => {
+    // Get product data from localStorage
+    const storedProducts = localStorage.getItem("cart");
+    let products = [];
+
+    try {
+      products = storedProducts ? JSON.parse(storedProducts) : [];
+    } catch (e) {
+      console.error("Error parsing localStorage products:", e);
+    }
+
+    // Prepare the data to post
+    const orderData = {
+      temporderid: "ajshkdhkh", // Generate dynamically if needed
+      total: "3200",
+      discount: "200",
+      amount: "3000",
+      paid: "3000",
+      payment_mode: "online",
+      products: products.map((product) => ({
+        id: product.id,
+        qunt: product.quantity,
+        mrp: product.mrp,
+        discount: product.discount,
+        total: product.total,
+      })),
+    };
+
+    // Send the POST request
+    try {
+      const response = await fetch("https://digihand.co.in/pawpups/api/order/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      const result = await response.json();
+      console.log("Order response:", result);
+      alert("Order placed successfully!");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("Failed to place order.");
+    }
+  });
+
         </script>
     </body>
     </html>

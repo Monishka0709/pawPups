@@ -89,11 +89,12 @@ nav{
     color: var(--white);
 }
 
-.cart-icon i{
+.cart-i-element{
     position: relative;
 }
-.cart-icon i::after{
-    content: '5';
+.cart-i-element::after{
+    content: var(--dynamic-content,"");
+    /* content: '5'; */
     display: flex;
     height: 12px;
     width: 12px;
@@ -133,7 +134,6 @@ nav{
     width: 100%;
     display: flex;
     justify-content: flex-start;
-
     gap: 1.5rem;
     padding: 0.3rem 0 0.3rem 2rem;
     background-color: var(--beige);
