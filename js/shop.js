@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // });
 
     // Fetch and render products
-    fetch('data.json')
+    fetch('../data.json')
         .then(res => res.json())
         .then(data => {
             allProducts = data.filter(p => p.remark !== 'Discontinued');
